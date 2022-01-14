@@ -1,0 +1,38 @@
+button{
+    color: white;
+    background-color:forestgreen;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    transition: 0.3s all;
+    cursor: pointer;
+    width: 200px;
+    height: 50px;
+}
+button:hover{
+    box-shadow : 0 0 5px 0 black;
+}
+.red{
+    transition: 0.3s all;
+}
+button.red{
+    background-color: crimson;
+}
+a{
+    height: 50px;
+    width: 260px;
+    background-color:indigo;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    font-size: 22px;
+    font-weight: 600;
+    text-align: center;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+a:hover{
+    box-shadow : 0 0 5px 0 black;
+}

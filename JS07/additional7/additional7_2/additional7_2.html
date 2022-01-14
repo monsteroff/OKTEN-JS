@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS7 - Additional2</title>
+</head>
+<body>
+    <script>
+        function date(){
+            let newDate = new Date();
+            let gun = newDate.getDay();
+            if (gun<10){
+                gun = `0${gun}`
+            }
+            let ay = newDate.getMonth();
+            if (ay<10){
+                ay = `0${ay}`
+            }
+            let il = newDate.getFullYear();
+            let saat = newDate.getHours();
+            if (saat<10){
+                saat = `0${saat}`
+            }
+            let deqiqe = newDate.getMinutes();
+            if (deqiqe<10){
+                deqiqe = `0${deqiqe}`
+            }
+            let saniye = newDate.getSeconds();
+            if (saniye<10){
+                saniye = `0${saniye}`
+            }
+            return `${gun}/${ay}/${il}, ${saat}:${deqiqe}:${saniye}`;
+        }
+        
+        function UserCard(key){
+            if (key === 1 || key === 2 || key === 3){
+                this.balance = 100;
+                this.transactionLimit = 100;
+                this.historyLogs = [];
+                this.key = key;
+                this.getCardOptions = function(){
+                    return {
+                        balance : this.balance,
+                        transactionLimit : this.transactionLimit,
+                        historyLogs : this.historyLogs,
+                        key : this.key
+                    };
+                };
+                this.putCredits = function(addMoney){
+                    this.balance += addMoney;
+                    this.historyLogs.push({operationType: "Received credits", credits : addMoney , operationTime : date()});
+                };
+                this.takeCredits = function(removeMoney){
+                    if(removeMoney <= this.balance && removeMoney <= this.transactionLimit){
+                        this.historyLogs.push({operationType: "Withdrawal of credits", credits : removeMoney , operationTime : date()});
+                        this.balance -= removeMoney;
+                    }
+                };
+                this.setTransactionLimit = function(newTrLimit){
+                    this.historyLogs.push({operationType: "Transaction limit change", credits : newTrLimit , operationTime : date()});
+                    this.transactionLimit = newTrLimit;
+                };
+                this.transferCredits = function(money,otherCard){
+                    if(Number((money*1.005).toFixed(1)) <= this.balance && Number((money*1.005).toFixed(1)) <= this.transactionLimit && Number((money*1.005).toFixed(1)) < this.balance){
+                        this.balance -= Number((money*1.005).toFixed(1));
+                        this.historyLogs.push({operationType: "Withdrawal of credits", credits : Number((money*1.005).toFixed(1)) , operationTime : date()});
+                        otherCard.balance += money;
+                        otherCard.historyLogs.push({operationType: "Received credits", credits : money , operationTime : date()});
+                    }
+                };
+            }
+        }
+
+        class UserAccount{
+            constructor(name){
+                this.name = name;
+                this.cards = [];
+                this.addCard = function(){
+                    if(this.cards.length < 3){
+                        this.cards.push(new UserCard(this.cards.length+1));
+                    }
+                };
+                this.getCardByKey = function(key){
+                    if ((this.cards.filter(c => c.key === key).length !== 0) && (key === 1 || key === 2 || key === 3)){
+                        return this.cards.filter(c => c.key === key)[0];
+                    } else return"no such card";
+                };
+            }
+        }
+
+        const user = new UserAccount("Bob");
+        const user2 = new UserAccount("Jax");
+        user.addCard();
+        user.addCard();
+        user2.addCard();
+        let card1 = user.getCardByKey(1);
+        let card2 = user.getCardByKey(2);
+        let card3 = user2.getCardByKey(1);
+        card1.putCredits(500);
+        card1.setTransactionLimit(800);
+        card1.transferCredits(200,card2);
+
+        card2.takeCredits(50);
+        card1.transferCredits(200,card3);
+
+        console.log(card1.getCardOptions());
+        console.log(card2.getCardOptions());
+        console.log(card3.getCardOptions());
+</script>
+</body>
+</html>

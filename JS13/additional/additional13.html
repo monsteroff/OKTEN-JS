@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS13 - Additional</title>
+    <link rel="stylesheet" href="additional13.css">
+</head>
+<body>
+    <form name="form1" action="">
+        <label for="input1_1">Name : <input name="input1_1" id="input1_1" type="text" placeholder="Name" required></label>
+        <label for="input1_2">Count : <input name="input1_2" id="input1_2" type="number" placeholder="Count" required></label>
+        <label for="input1_3">Price : <input name="input1_3" id="input1_3" type="number" placeholder="Price" required></label>
+        <label for="input1_4">Image : <input name="input1_4" id="input1_4" type="text" placeholder="Image URL" required></label>
+        <button>Submit</button>
+    </form>
+
+    <div class="forAnchor"><a href="list13.html">My products</a></div>
+    <script src="additional13.js"></script>
+    <script>
+        // - Імітуємо наповнення інтернет магазину товарами :
+        // Створити форму з наступними полями :
+        // - назва товару
+        // - кількість товару
+        // - ціна товару
+        // - картинка товару (посилання з інтернету)
+        // Зберігати товари в масив в локалсорадж. 
+        // При збережені товару з форми, action не повинно відбуватись (preventDefault)
+        // створити елемент <a href='list.html'> На сторінку товарів</a>, 
+        // та list.html, при переході на який відобразити на сторінці всі товари.
+        // На сторінці  list.html побудувати кнопку яка видаляє всі товари з корзини та локалстораджа.
+        // До кожного товару додати кнопку, при кліку на яку з лс видаляється конкретний обраний  товар
+
+        // dla pravilnoqo udaleniya (t.e. v spiske moqut bit identichnie veshi) nujno peredat znachenie id 
+        // esli u produkta netu to id ++0, esli est to naxodim produkt s samim bolshim id i dobavlaem v noviy produkt ++id(samoqo bolshoqo)
+    </script>
+</body>
+</html>

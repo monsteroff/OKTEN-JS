@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS3 - Classwork2</title>
+</head>
+<body>
+    <h3>
+        Зробити масив з 10 чисел [2,17,13,6,22,31,45,66,100,-18] та: <br>
+        1. перебрати його циклом while  <br>
+        2. перебрати його циклом for  <br>
+        3. перебрати циклом while та вивести  числа тільки з непарним індексом  <br>
+        4. перебрати циклом for та вивести  числа тільки з непарним індексом  <br>
+        5. перебрати циклом while та вивести  числа тільки парні  значення  <br>
+        6. перебрати циклом for та вивести  числа тільки парні  значення  <br>
+        7. замінити кожне число кратне 3 на слово "okten"  <br>
+        8. вивести масив в зворотньому порядку.  <br>
+        9. всі попередні завдання (окрім 8), але в зворотньому циклі (с заду на перед)  <br>
+    </h3>
+
+    <script>
+        let arr = [2,17,13,6,22,31,45,66,100,-18];
+
+        let j = 0;
+        while(j<arr.length){
+            console.log(arr[j]);
+            j++;
+        }
+
+        console.log("+++++++++++++++++++++++");
+
+        for(let i = 0 ; i < arr.length ; i++){
+            console.log(arr[i]);
+        }
+
+        console.log("+++++++++++++++++++++++");
+
+        let z = 0;
+        while(z<arr.length){
+            if(z % 2 !== 0) console.log(arr[z]);
+            z++;
+        }
+
+        console.log("+++++++++++++++++++++++");
+
+        for(let i = 0 ; i < arr.length ; i++){
+            if(i % 2 !== 0) console.log(arr[i]);
+        }
+
+        console.log("+++++++++++++++++++++++");
+
+        let u = 0;
+        while(u<arr.length){
+            if(u % 2 === 0) console.log(arr[u]);
+            u++;
+        }
+
+        console.log("+++++++++++++++++++++++");
+
+        for(let i = 0 ; i < arr.length ; i++){
+            if(i % 2 === 0) console.log(arr[i]);
+        }
+
+        console.log("+++++++++++++++++++++++");
+
+        for(let i = 0 ; i < arr.length ; i++){
+            if(i % 3 === 0) arr[i] = "okten";
+        }
+        console.log(arr);
+
+        console.log("+++++++++++++++++++++++");
+
+        for(let i = arr.length -1 ; i >= 0 ; i--){
+            console.log(arr[i]);
+        }
+
+        // 9 zadacha eto kak pomenyat stroku 68 na 75 , prosto na predidushix zadaniyax.
+    </script>
+</body>
+</html>

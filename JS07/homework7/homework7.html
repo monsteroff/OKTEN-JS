@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS7 - Homework</title>
+</head>
+<body>
+    <script>
+        // - Створити функцію конструктор для об'єктів User з полями id, name, surname , email, phone
+        // створити пустий масив, наповнити його 10 об'єктами new User(....)
+        function User(id,name,surname,email,phone){
+            this.id = id;
+            this.name = name;
+            this.surname = surname;
+            this.email = email;
+            this.phone = phone;
+        }
+        let userArr = [];
+        for (let i = 1 ; i < 11 ; i++) {
+            let firstN = Math.floor((Math.random()*8)+2);
+            let n = () => Math.floor(Math.random()*10);
+            userArr.push(new User(i,`name${i}`,`surname${i}`,`email${i}@gmail.com`,`+99451 ${firstN}${n()}${n()} ${n()}${n()} ${n()}${n()}`))
+        }
+        console.log(userArr);
+
+        // - Взяти масив з  User[] з попереднього завдання, та відфільтрувати , залишивши тільки об'єкти з парними id (filter)
+        console.log(userArr.filter(user => user.id % 2 === 0));
+        // - Взяти масив з  User[] з попереднього завдання, та відсортувати його по id. по зростанню (sort)
+        console.log(userArr.sort((a,b) => a.id - b.id));
+        // - створити класс для об'єктів Client з полями id, name, surname , email, phone, order (поле є масивом зі списком товарів)
+        class Client{
+            constructor(id,name,surname,email,phone,order){
+                this.id = id;
+                this.name = name;
+                this.surname = surname;
+                this.email = email;
+                this.phone = phone;
+                this.order = order;
+            };
+        }
+        // створити пустий масив, наповнити його 10 об'єктами Client
+        let newClient = [];
+        function randomOrderArray(count){
+            let arr = [];
+            for (let i = 1 ; i <= count ;i++){
+                arr.push(`order${i}`)
+            }
+            return arr;
+        }
+        for (let i = 1 ; i <= 10 ; i++){
+            newClient.push(new Client(i,`ClientName${i}`,`ClientSurname${i}`,`ClientEmail${i}@gmail.com`,`+99451 ${Math.floor(Math.random()*(10000000-2000000)+2000000)}`,randomOrderArray(Math.ceil(Math.random()*10))))
+        }
+        console.log(newClient);
+        // - Взяти масив (Client [] з попереднього завдання).Відсортувати його по кількості товарів в полі order по зростанню. (sort)
+        console.log(newClient.sort((a,b) => a.order.length-b.order.length));
+
+    </script>
+</body>
+</html>

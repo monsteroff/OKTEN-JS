@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS11 - Classwork</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <a href="favorites11.html">Show Favorites</a>
+    <script>
+        // є масив -
+        // створити під кожен об'єкт свій блок з кнопкою "додати до улюблених" при натисканні на яку об'єкт потрапляє 
+        // до масиву favorites улюблених обраних об'єктів в локальному сховищі.
+        // Створити сторніку favorites.html при переході на яку потрібно вивест в документ всіх обраних на попередньому етапі.
+        let usersKey = "users";
+        let favoritesKey = 'favorites';
+        if(JSON.parse(localStorage.getItem(usersKey)) === null){
+            let users = [
+            {name: 'vasya', age: 31, status: false},
+            {name: 'petya', age: 30, status: true},
+            {name: 'kolya', age: 29, status: true},
+            {name: 'olya', age: 28, status: false},
+            {name: 'max', age: 30, status: true},
+            {name: 'anya', age: 31, status: false},
+            {name: 'oleg', age: 28, status: false},
+            {name: 'andrey', age: 29, status: true},
+            {name: 'masha', age: 30, status: true},
+            {name: 'olya', age: 31, status: false},
+            {name: 'max', age: 31, status: true}
+            ];
+            users.forEach(user => {
+                if (user.inFavorites === undefined) {
+                    user.inFavorites = false;
+                }
+            });
+            localStorage.setItem(usersKey, JSON.stringify(users));
+        }
+        
+        let fav = JSON.parse(localStorage.getItem(favoritesKey)) || [];
+        localStorage.setItem(favoritesKey, JSON.stringify(fav));
+        
+        let newDiv = document.createElement("div");
+        document.body.insertBefore(newDiv, document.body.getElementsByTagName("script")[0]);
+
+        let uzFromLS = JSON.parse(localStorage.getItem(usersKey));
+        uzFromLS.forEach(user => {
+            let usersDiv = document.createElement('div');
+            let userUl = document.createElement('ul');
+            let btn = document.createElement('button');
+            userUl.innerHTML = 
+            `
+            <li>Name: ${user.name}</li>
+            <li>Age: ${user.age}</li>
+            <li>Status: ${user.status}</li>
+            `;
+            if(!user.inFavorites) btn.innerText = 'ADD TO FAVORITES';
+            else {
+                btn.innerText = 'REMOVE FROM FAVORITES';
+                btn.classList.add("red");
+            }
+            btn.onclick = () => {
+                let favoritesArr = JSON.parse(localStorage.getItem(favoritesKey));
+                if(!user.inFavorites) {
+                    user.inFavorites = true;
+                    favoritesArr.push(user);
+                    localStorage.setItem(favoritesKey, JSON.stringify(favoritesArr));
+                    btn.innerText = 'REMOVE FROM FAVORITES';
+                    btn.classList.toggle("red");
+                    updateUserInLS();
+                }
+                else {
+                    user.inFavorites = false;
+                    let index = favoritesArr.indexOf(favoritesArr.find(a=> a.name===user.name && a.age===user.age && a.status===user.status));
+                    favoritesArr.splice(index,1);
+                    localStorage.setItem(favoritesKey, JSON.stringify(favoritesArr));
+                    btn.innerText = 'ADD TO FAVORITES';
+                    btn.classList.toggle("red");
+                    updateUserInLS();
+                }
+            }
+            usersDiv.append(userUl, btn);
+            newDiv.append(usersDiv);
+        });
+
+        function updateUserInLS(){
+            localStorage.setItem(usersKey, JSON.stringify(uzFromLS));
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS11 - Homework</title>
+</head>
+<body>
+
+    <form name="form1" action="">
+        <label> Name :
+            <input name="name" type="text">
+        </label>
+        <label> Age :
+            <input name="age" type="number">
+        </label>
+        <button id="btn1">CONFIRM</button>
+    </form>
+
+    <hr>
+
+    <form name="form2" action="">
+        <label>Car model : <input name="model" type="text"></label>
+        <label>Car type : <input name="type" type="text"></label>
+        <label>Engine volume : <input name="volume" type="number"></label>
+        <button id="btn2">CONFIRM</button>
+    </form>
+    
+    <script>
+        // -створити форму з інпутами для name та age.
+        // При відправці форми записати об'єкт в localstorage
+       
+        // -створити форму з інпутами для model,type та volume автівки.
+        // при відпарвці форми об'єкти зберігаються в масиві в локальному сховищі.
+        let {name, age} = document.forms.form1;
+        let {model, type, volume} = document.forms.form2;
+        let keyUser = "keyUser";
+        let keyCar = "keyCar";
+        let btn1 = document.getElementById("btn1");
+        let btn2 = document.getElementById("btn2");
+
+        function saveUser(userName, userAge){
+            let user = {name:userName, age:userAge};
+            localStorage.setItem(keyUser, JSON.stringify(user));
+        }
+        function saveCar(modelCar, typeCar, volumeCar){
+            let arr = JSON.parse(localStorage.getItem(keyCar)) || [];
+            arr.push({model:modelCar, type:typeCar, volume:volumeCar});
+            localStorage.setItem(keyCar, JSON.stringify(arr));
+        }
+        
+        btn1.onclick = () => saveUser(name.value, age.value);
+        btn2.onclick = () => saveCar(model.value, type.value, volume.value);
+    </script>
+</body>
+</html>

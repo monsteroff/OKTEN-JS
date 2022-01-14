@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JS9 - Homework</title>
+</head>
+<body>
+<ul class="menu"></ul>
+<script>
+    // Все робити за допомоги js.
+    // - створити блок,
+    // - додати йому класи wrap, collapse, alpha, beta
+    // - додати стилі(довільні значення) : колір фону, колір тексту, розмір тексту
+    // - додати цей блок в body.
+    // - клонувати його повністю, та додати клон в body.
+    let newElement = document.createElement("div");
+    newElement.classList.add("wrap","collapse","alpha","beta");
+    document.body.insertBefore(newElement,document.getElementsByTagName("script")[0]);
+
+    // - Є масив:
+    // ['Main','Products','About us','Contacts']
+    // Взяти файл template1.html та додати в нього скріпт котрий для кожного елементу 
+    // масиву створює li та додає його до блоку .menu
+    // Завдання робити через цикли.
+    let arr1 = ['Main','Products','About us','Contacts'];
+    let menu = document.getElementsByClassName("menu")[0]
+    for (let i = 0 ; i < arr1.length ; i++){
+        menu.innerHTML += `<li>${arr1[i]}</li>`
+    }
+
+    // - Є масив
+    let coursesAndDurationArray = [
+        {title: 'JavaScript Complex', monthDuration: 5},
+        {title: 'Java Complex', monthDuration: 6},
+        {title: 'Python Complex', monthDuration: 6},
+        {title: 'QA Complex', monthDuration: 4},
+        {title: 'FullStack', monthDuration: 7},
+        {title: 'Frontend', monthDuration: 4}
+    ];
+    // Для кожного елементу масиву зробити блок в якому вивести інформацію про title та monthDuration
+    // Завдання робити через цикли.
+    let newElement2 = document.createElement("div");
+    for (let i = 0 ; i < coursesAndDurationArray.length ; i++){
+        newElement2.innerHTML += 
+        `
+        <h2>Name of courses : ${coursesAndDurationArray[i]["title"]}</h2>
+        <h3>Month duration of courses : ${coursesAndDurationArray[i]["monthDuration"]}</h3>
+        `
+    }
+    document.body.insertBefore(newElement2,document.getElementsByTagName("script")[0]);
+
+    // - Є масив
+    // massiv takoy kak to chto sverxu
+    // За допомоги скріпта для кожного елементу масиву зробити <div class='item'> ,  в якому буде 
+    // <h1 class='heading'>  з title  елементу, та <p class='description'> з monthDuration елементу.
+    // Завдання робити через цикли.
+    let newElement3 = document.createElement("div");
+    newElement3.classList.add("item");
+    for (let i = 0 ; i < coursesAndDurationArray.length ; i++){
+        newElement2.innerHTML += 
+        `
+        <h1 class="heading">Name of courses : ${coursesAndDurationArray[i]["title"]}</h1>
+        <p class="description">Month duration of courses : ${coursesAndDurationArray[i]["monthDuration"]}</p>
+        `
+    }
+    document.body.insertBefore(newElement2,document.getElementsByTagName("script")[0]);
+</script>
+</body>
+</html>

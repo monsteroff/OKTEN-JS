@@ -1,0 +1,129 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    font-weight: 600;
+}
+a:link,
+a:visited,
+a:active{
+    color: black;    
+}
+body{
+    background-color: #1e2125;
+}
+.userInfoContainer{
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    padding: 10px;
+}
+.userInfoContainer>ul{
+    border:2px solid silver;
+    transition: 0.3s;
+}
+.userInfoContainer>ul:hover{
+    box-shadow: 0 0 0 2px black inset;
+}
+.userInfoContainer ul{
+    color: black;
+    background-color: silver;
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+.userPostsButton{
+    background-color: silver;
+    border: 2px solid silver;
+    border-radius: 5px;
+    width: calc(90% + 20px);
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.3s;
+    align-self: center;
+    box-shadow: 0 0 0 2px green inset;
+}
+.userPostsButton:hover{
+    box-shadow: 0 0 0 2px #212428 inset;
+}
+.userPostsButton.show{
+    box-shadow: 0 0 0 2px rgb(167, 0, 0) inset;
+}
+.userPostsButton.show:hover{
+    box-shadow: 0 0 0 2px black inset;
+}
+.userPostsDiv{
+    display: grid;
+    grid-template-columns: repeat(5 , 1fr);
+    gap: 10px;
+    transition: 1s;
+    min-height: 0;
+    opacity: 0;
+    overflow: hidden;
+}
+.userPostsDiv.show{
+    transition: 1s;
+    min-height: 200px;
+    opacity: 1;
+}
+.userPostDiv{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 40px;
+    gap: 10px;
+    min-height: 200px;
+    border-radius: 9px;
+    background-color: silver;
+    border : 2px solid silver;
+    padding: 5px;
+    min-width: 150px;
+    transition: 0.3s;
+}
+.userPostDiv:hover{
+    box-shadow: 0 0 0 1.5px black inset;
+}
+.userPostTitle{
+    background-color: gray;
+    border-radius: 5px;
+    padding: 10px;
+}
+.userPostDetailsButton{
+    height: 40px;
+    background-color: gray;
+    border : 2px solid gray;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.userPostDetailsButton:hover{
+    box-shadow: 0 0 0 1.5px black inset;
+}
+.userPostDetailsAnchor{
+    color: black;
+}
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: silver;
+}
+::-webkit-scrollbar-thumb {
+    background: gray;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: rgb(104, 104, 104);
+}
+html{
+    overflow-y: scroll;
+}

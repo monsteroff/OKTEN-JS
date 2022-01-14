@@ -1,0 +1,61 @@
+*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+/* --------------Task1-------------- */
+
+.task1Div{
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+    padding: 15px;
+}
+.task1Div .post{
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.task1Div .post .postTitle{
+    background-color: aqua;
+    padding: 10px;
+}
+.task1Div .post .postBody{
+    background-color: yellow;
+    padding: 10px;
+    text-align: justify;
+}
+
+/* --------------Task2-------------- */
+
+.task2Div{
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+    padding: 15px;
+}
+.task2Div .comment{
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.task2Div .comment .commentIdAndName{
+    background-color: crimson;
+    padding: 10px;
+}
+.task2Div .comment .commentEmail{
+    padding: 0 10px;
+}
+.task2Div .comment .commentBody{
+    background-color: black;
+    color: white;
+    padding: 10px;
+    text-align: justify;
+}

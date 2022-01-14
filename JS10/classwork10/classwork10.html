@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS10 - Classwork</title>
+</head>
+<body>
+    <form name="form1" action="">
+        <input type="number" name="input1_1">
+        <input type="number" name="input1_2">
+    </form>
+    <form name="form2" action="">
+        <input type="number" name="input2_1">
+        <input type="number" name="input2_2">
+    </form>
+    <button id="btn1">btn1</button>
+
+    <hr>
+
+    <form name="form3" action="">
+        <input name="input3_1" type="number" placeholder="cols">
+        <input name="input3_2" type="number" placeholder="rows">
+        <input name="input3_3" type="text" placeholder="inside">
+    </form>
+    <button id="btn2">btn2</button>
+    <div id="forForm3"></div>
+
+    <hr>
+
+    <form name="form4" action="">
+        <input name="input4_1" type="text" placeholder="sentence censore">
+    </form>
+    <button id="btn3">btn3</button>
+    <div id="forTask4"></div>
+    
+    <script>
+        // - створити 2 форми  по 2 інпути в кожній. ствоирити кнопку при кліку на яку считується та виводиться на консоль інформація з цих 2х форм.
+        // Кнопка повинна лежати за межами форм (Щоб ьуникнути  перезавантаження сторінки)
+        // Доступ до інпутів через Forms API. Отже дайте формі та інпутам всі необхідні атрибути.
+        document.getElementById("btn1").onclick = function() {
+            let value1_1 = document.forms.form1.input1_1.value;
+            let value1_2 = document.forms.form1.input1_2.value;
+            let value2_1 = document.forms.form2.input2_1.value;
+            let value2_2 = document.forms.form2.input2_2.value;
+            console.log(value1_1 , value1_2, value2_1, value2_2);
+        }
+        // - Створити 3 инпута та кнопку. Один визначає кількість рядків, другий - кількість ячеєк, третій вмиіст ячеєк.
+        // При натисканні кнопки, вся ця інформація зчитується і формується табличка, з відповідним вмістом.
+        // (Додатковачастина для завдання)
+        document.getElementById("btn2").onclick = function() {
+            let cols = +document.forms.form3.input3_1.value;
+            let rows = +document.forms.form3.input3_2.value;
+            let inside = document.forms.form3.input3_3.value;
+            let table = document.createElement("table");
+            for(let i = 0 ; i < rows ; i++){
+                let tr = document.createElement("tr");
+                for(let j = 0 ; j < cols ; j++){
+                    let td = document.createElement("td");
+                    td.innerText = inside;
+                    tr.append(td);
+                }
+                table.append(tr);
+            }
+            document.getElementById("forForm3").append(table);
+        }
+        // - Сворити масив не цензцрних слів.
+        // Сворити інпут текстового типу.
+        // Якщо людина вводить слово і воно міститься в масиві не цензурних слів
+        // кинути алерт з попередженням.
+        // Перевірку робити при натисканні на кнопку
+
+        // sleduyushiy varint budet rabotat i dla etoqo (net smisla pisat tak  t.k. ne prosit naprimer sobrat kolichestvo cenzurnix slov)
+
+        // - Сворити масив не цензцрних слів.
+        // Сворити інпут текстового типу.
+        // Потрібно перевіряти чи не містить ціле речення в собі погані слова.
+        // Кинути алерт з попередженням у випадку якщо містить.
+        // Перевірку робити при натисканні на кнопку
+        let censored = ["axmaq","sherefsiz","leyaqetsiz","xiyar"]
+        document.getElementById("btn3").onclick = function() {
+            function check(sent){
+                let trueOrFalse = true
+                for(let i = 0 ; i < censored.length ; i++) if (sent.includes(censored[i])) trueOrFalse =  false;
+                return trueOrFalse;
+            }
+            check(document.forms.form4.input4_1.value) ? document.getElementById("forTask4").innerText = "sentence is ok" : document.getElementById("forTask4").innerText = "sentence has censored word";
+        }
+    </script>
+</body>
+</html>

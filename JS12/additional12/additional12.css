@@ -1,0 +1,144 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+.taskDiv{
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    padding: 10px;
+}
+.taskDiv .userDiv{
+    background-color: lightgray;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 10px;
+    transition: 0.3s;
+}
+.taskDiv .userDiv:hover{
+    box-shadow: 0 0 0 2px black inset;
+}
+.taskDiv .userDiv .userName{
+    background-color: rgb(231, 119, 119);
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+.taskDiv .userDiv .userInfo{
+    background-color: silver;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+.taskDiv .userDiv .userPostsDiv{
+    min-height: 0;
+    opacity: 0;
+    transition: 0.3s;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    background-color: silver;
+}
+.taskDiv .userDiv .userPostsDiv.show{
+    min-height: 200px;
+    opacity: 1;
+    padding: 10px;
+    border-radius: 10px;
+}
+.taskDiv .userDiv .userPostsDiv .postDiv{
+    background-color: lightgray;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    border-radius: 5px;
+    padding: 10px;
+    transition: 0.3s;
+}
+.taskDiv .userDiv .userPostsDiv .postDiv:hover{
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.6) inset;
+}
+.taskDiv .userDiv .userPostsDiv .postDiv .postTitle{
+    background-color: silver;
+    padding: 5px;
+    border-radius: 3px;
+}
+/* .taskDiv .userDiv .userPostsDiv .postDiv .postBody{} */
+.taskDiv .userDiv .userPostsDiv .postDiv .postComments{
+    min-height: 0;
+    opacity: 0;
+    transition: 0.3s;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    background-color: silver;
+}
+.taskDiv .userDiv .userPostsDiv .postDiv .postComments.show{
+    min-height: 200px;
+    opacity: 1;
+    padding: 10px;
+    border-radius: 5px;
+}
+.taskDiv .userDiv .userPostsDiv .postDiv .postComments .commentDiv{
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+    border-radius: 3px;
+    padding: 5px;
+    overflow: hidden;
+    background-color: lightgray;
+    transition: 0.3s;
+}
+.taskDiv .userDiv .userPostsDiv .postDiv .postComments .commentDiv:hover{
+    box-shadow: 0 0 0 2px black inset;
+}
+.taskDiv .userDiv .userPostsDiv .postDiv .postComments .commentDiv .commentWriter{
+    
+}
+.taskDiv .userDiv .userPostsDiv .postDiv .postComments .commentDiv .commentBody{
+    
+}
+
+.taskDiv .userDiv .userPostsDiv .postDiv .postButton{
+    border: 0;
+    background-color: silver;
+    color: black;
+    height: 40px;
+    border-radius: 5px;
+    transition: 0.3s;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0 10px;
+    width: 200px;
+    align-self: flex-end;
+}
+.taskDiv .userDiv .userPostsDiv .postDiv .postButton:hover{
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.4) inset;
+}
+/* .taskDiv .userDiv .userPostsDiv .postDiv .postButton.show{} */
+.taskDiv .userDiv .userPostsDiv .postDiv .postButton.show:hover{
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.4) inset;
+}
+.taskDiv .userDiv .userButton{
+    border: 0;
+    background-color: silver;
+    color: black;
+    height: 40px;
+    border-radius: 5px;
+    transition: 0.3s;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0 10px;
+}
+.taskDiv .userDiv .userButton:hover{
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.4) inset;
+}
+/* .taskDiv .userDiv .userButton.show{} */
+.taskDiv .userDiv .userButton.show:hover{
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.4) inset;
+}

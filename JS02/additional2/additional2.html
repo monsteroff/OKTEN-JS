@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS2 - Additional</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        input {
+            /* width: 300px; */
+            height: 30px;
+        }
+
+        h2 {
+            text-align: justify;
+        }
+
+        button {
+            border: 1px solid black;
+            border-radius: 3px;
+            width: 80px;
+            height: 30px;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <h1>Task1</h1>
+    <h3>
+        - Нам дано масив друзів let friends = ["Ivan", "Slavik", "Grisha", "Lera", "Ira"]; Потрібно зробити перевірку якщо 
+        кількість елементів у масиві більше або дорівнює 3, то виводиться повідомлення про те, що це великий масив, в якому  3 і більше елементи.
+        Інакше слід вивести на екран повідомлення про те, що це маленький масив, в якому менше 3-х елементів.
+    </h3>
+    <input id="inp" onkeyup="check()" type="text" placeholder="Add friends">
+    <button id="add" onclick="add()" disabled>Add</button>
+    <button id="reset" onclick="reset()" disabled>Reset</button>
+    <h2 id="showlist__html"></h2>
+    <h2 id="massivShowOne"></h2>
+    <div id="resultOne"></div>
+
+    <h1>Task2</h1>
+    <h3>
+        - Маємо 3 числа і між ним  нам потрібно знайти те що посередині.
+        Знайти, яке з них є середнім (більше одного, але менше за інше). Перевірити, чи знаходиться перше число між двома іншими.
+    </h3>
+    <input id="twoA" type="number" placeholder="First number is 0" onkeyup="two()">
+    <input id="twoB" type="number" placeholder="Second number is 0" onkeyup="two()">
+    <input id="twoC" type="number" placeholder="Third number is 0" onkeyup="two()">
+    <div id="resultTwo"></div>
+    <div id="resultTwoSecond"></div>
+
+    <h1>Task3</h1>
+    <h3>
+        - Перепишіть конструкцію if з використанням умовного оператора '?': <br>
+        let result; <br>
+        if (a + b < 4) { <br>
+        &nbsp;&nbsp;&nbsp;&nbsp; result = 'Мало';<br>
+        } else { <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;result = 'Багато'; <br>
+        }
+    </h3>
+    <input type="number" placeholder="a" id="threeA" onkeyup="three()">
+    <input type="number" placeholder="b" id="threeB" onkeyup="three()">
+    <div id="resultThree"></div>
+    
+    <h1>Task4</h1>
+    <h3>
+        - Маємо будь яке число від -100 , 0 , +100 потрібно перевірити яким є число: позитивним, негативним або нулем
+        напишіть це тернарним оператором
+    </h3>
+    <input type="number" placeholder="a" id="fourA" onkeyup="four()">
+    <div id="resultFour"></div>
+
+
+    <script>
+        window.addEventListener("keyup", function(event){
+            event.preventDefault();
+            if (event.keyCode === 13){
+                add();
+            }
+        });
+
+        function check() {
+            if (document.getElementById("inp").value === ``) {
+                document.getElementById("add").setAttribute("disabled", "disabled");
+                document.getElementById("add").style.cursor = "not-allowed";
+            } else {
+                document.getElementById("add").removeAttribute("disabled", "disabled");
+                document.getElementById("add").style.cursor = "pointer";
+            }
+        }
+
+        let friends = [];
+
+        function add() {
+            check();
+            let a = document.getElementById("inp").value;
+            if(a !== ``){
+                friends.push(a);
+                document.getElementById("inp").value = ``;
+                check();
+                document.getElementById("reset").removeAttribute("disabled");
+                document.getElementById("reset").style.cursor = "pointer";
+                document.getElementById("massivShowOne").innerHTML = 
+                    `Massiv : [
+                    ${friends.map
+                        ((el, i) =>
+                            i !== friends.length - 1
+                                ?
+                                isNaN(el) ? `"${el}",` : `${el},`
+                                :
+                                isNaN(el) ? `"${el}"` : `${el}`
+                        ).join(' ')
+                    }]`
+                document.getElementById("resultOne").innerHTML = `<h2>${friends.length >=3 ? "Це великий масив, в якому 3 або більше 3-х елементив." : "Це маленький масив, в якому менше 3-х елементів."}</h2>`
+            }
+        }
+
+        function reset() {
+            friends = [];
+            document.getElementById("reset").setAttribute("disabled", "disabled");
+            document.getElementById("reset").style.cursor = "not-allowed";
+            document.getElementById("massivShowOne").innerHTML = ``;
+            document.getElementById("resultOne").innerHTML = ``;
+        }
+
+
+
+
+        function two(){
+            let a = Number(document.getElementById("twoA").value);
+            let b = Number(document.getElementById("twoB").value);
+            let c = Number(document.getElementById("twoC").value);
+            if (b < a && a < c || c < a && a < b) {
+                document.getElementById("resultTwo").innerHTML = `<h2>Sredniy : ${a}</h2>`;
+                document.getElementById("resultTwoSecond").innerHTML = `<h2>Pervoe chislo : ${a} naxoditsya mejdu chislami ${b<c? b:c} i ${c<b? b:c} </h2>`;
+
+            } else if (a < b && b < c || c < b && b < a) {
+                document.getElementById("resultTwo").innerHTML = `<h2>Sredniy : ${b}</h2>`;
+                document.getElementById("resultTwoSecond").innerHTML = `<h2>Pervoe chislo : ${a} ne naxoditsya mejdu chislami ${b<c? b:c} i ${c<b? b:c} </h2>`;
+            } else if (a < c && c < b || b < c && c < a) {
+                document.getElementById("resultTwo").innerHTML = `<h2>Sredniy : ${c}</h2>`;
+                document.getElementById("resultTwoSecond").innerHTML = `<h2>Pervoe chislo : ${a} ne naxoditsya mejdu chislami ${b<c? b:c} i ${c<b? b:c} </h2>`;
+            } else {
+                document.getElementById("resultTwo").innerHTML = `<h2>Est odinakovie nomera</h2>`;
+                document.getElementById("resultTwoSecond").innerHTML = `<h2>Pervoe chislo : ${a} ne naxoditsya mejdu chislami ${b<c? b:c} i ${c<b? b:c} </h2>`;
+            }
+            
+        }
+        function three(){
+            console.clear();
+            let a = document.getElementById("threeA").value;
+            let b = document.getElementById("threeB").value;
+            a + b < 4 ? result = 'Мало' : result = 'Багато';
+            console.log(result);
+            document.getElementById("resultThree").innerHTML = `<h2>${result}</h2>`;
+        }
+        function four(){
+            let a = Number(document.getElementById("fourA").value);
+            (-100) <= a && a <= 100
+                ? a === 0 
+                    ? document.getElementById("resultFour").innerHTML = `<h2>zero</h2>`
+                    : (a > 0 
+                        ? document.getElementById("resultFour").innerHTML = `<h2>positive</h2>`
+                        : document.getElementById("resultFour").innerHTML = `<h2>negative</h2>`
+                    )
+                : document.getElementById("resultFour").innerHTML = `<h2>has to be : -100 <= a <= 100</h2>`
+            ;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS1 - Classwork</title>
+</head>
+<body>
+    <h2>1. Створити масив з 10 чисел (можна використовувати Math.random Та Math.floor). Скласти результат цих чисел в змінній result.</h2>
+    <button onclick="cw1()">CW1</button>
+    <h2>2. Створити об'єкт book з наступними полями  - назва, кількість сторінок, жанр</h2>
+    <button onclick="cw2()">CW2</button>
+    <h2>3. Створити об'єкт book з наступними полями  - назва, кількість сторінок, жанр, автори</h2>
+    <button onclick="cw3()">CW3</button>
+    <h2>4. Створити маис об'єктів book з наступними полями  - назва, кількість сторінок, жанр, автори. Вивести кожну книгу як окремий об'єкт</h2>
+    <button onclick="cw4()">CW4</button>
+    <h2>
+        5. Напишіть код, який вираховує площу прямокутника висотою 23см. (змінна height) та шириною 10см (змінна width). <br>
+        Значення площі зберігати в змінній s.
+    </h2>
+    <button onclick="cw5()">CW5</button>
+    <h2>6. Напиши код, який знаходить об'єм циліндра заввишки 10м (змінна heightC) та діаметром основи 4м (dC), результат помістіть у змінну v.</h2>
+    <button onclick="cw6()">CW6</button>
+    <h2>
+        7. У прямокутного трикутника дві сторони n (зі значенням 3) та m (зі значенням 4). <br>
+       Знайдіть гіпотенузу k за теоремою Піфагора (потрібно використовувати функцію Math.pow (число, ступінь) або оператор зведення в ступінь **).
+    </h2>
+    <button onclick="cw7()">CW7</button>
+
+    <script>
+        function cw1(){
+            console.clear();
+            let arr = [];
+            for(let i = 0; i<10 ;i++){
+                // mejdu 10 i 100
+                arr.push(Math.floor(Math.random() * (100 - 10 + 1) + 10));
+            }
+            console.log(arr);
+        }
+        function cw2(){
+            console.clear();
+            let obj = {
+                name : "kniga1",
+                pages : "325",
+                genre : "detektiv"
+            }
+            console.log(obj);
+        }
+        function cw3(){
+            console.clear();
+            let obj = {
+                name : "kniga2",
+                pages : "330",
+                genre : "komiks",
+                authors : ["Djaxa","Leo","Seriy"]
+            }
+            console.log(obj);
+        }
+        function cw4(){
+            console.clear();
+            let kniga1 = {
+                name : "kniga1",
+                pages : "325",
+                genre : "detektiv",
+                authors : ["Rauf","Djaxa","Aslan"]
+            }
+            let kniga2 = {
+                name : "kniga2",
+                pages : "330",
+                genre : "komiks",
+                authors : ["Humay","Xadik","Olga"]
+            }
+            let knigi = [kniga1,kniga2];
+
+            console.log(knigi);
+        }
+        function cw5(){
+            console.clear();
+            let height = 23;
+            let width = 10;
+            let s = height*width;
+            console.log(`${height} * ${width} = ${s}`);
+        }
+        function cw6(){
+            console.clear();
+            let heightC = 10;
+            let dC = 4;
+            let radiusC = dC/2;
+            let pi = 3.14;
+            let v = heightC * pi * Math.pow(radiusC , 2);
+            console.log(v.toFixed(1));
+        }
+        function cw7(){
+            console.clear();
+            let n = 3;
+            let m = 4;
+            let k = Math.sqrt(n**2 + m**2);
+            console.log(k);
+        }
+    </script>
+</body>
+</html>

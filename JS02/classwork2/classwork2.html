@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS2 - Classwork</title>
+</head>
+<body>
+    <h2>
+        - Користувач вводить або має два числа. <br>
+        Потрібно знайти та вивести максимальне число з тих двох. <br>
+        Також потрібно врахувати коли введені рівні числа. <br>
+    </h2>
+    <button onclick="one()">TASK1</button>
+
+    <h2>
+        - У першому під'їзді квартири з 1 до 20. У другому з 21 по 48. У третьому з 49 по 90. <br>
+        Користувач вводить номер квартири просто в змінні або через prompt(''). <br>
+        Програма повинна зазначити, в якому під'їзді знаходиться дана квартира. <br>
+    </h2>
+    <button onclick="two()">TASK2</button>
+
+    <h2>
+        - Ми маємо змінну number в яку користувач задає числове значення, 
+        якщо змінна рівна 10 вивести повідомлення ВІРНО, якщо змінна не рівна 10 - тоді НЕВІРНО
+    </h2>
+    <button onclick="three()">TASK3</button>
+
+    <h2>
+        - Ми маємо змінну x в яку користувач задає  значення,  якщо в змінну записане число, вивести 1, <br>
+        якщо в змінну записали стрінгу вивести 2, якщо булеве значення - 3, якщо об'єкт або масив - 3. <br>
+        якщо в змінну записали щось інше, спрацьовує else
+    </h2>
+    <input type="text" id="fourth" onkeyup="four()" placeholder="Task 4">
+
+    <h2>
+        - Задача-гра "чи ми йдемо сьогодні в OKTEN на навчання?". <br>
+        Змінна, яка характеризує температуру. Якщо температура від +10 до +22 вивести повідомлення що ми йдемо ВЧИТИСЯ . <br>
+        Якщо інша темпаретура, тоді виводимо повідомлення що сидимо вдома і вчимося ОНЛАЙН
+    </h2>
+    <input type="number" id="fifth" onkeyup="five()" placeholder="Task 5">
+
+    <h2>
+        - За допомогою switch case - реалізувати гру - вікторину, де ми вводимо число від 1 до 5. І взалежності від введеного <br>
+        числа нам дається приз. (Авто, Мото, Телефон, і т.д ) і якщо число не підходить тоді  вивести Повідомлення - що число не вірне ... .
+    </h2>
+    <input type="number" id="sixth" onkeyup="six()" placeholder="Task 6">
+
+    <script>
+        function one(){
+            console.clear();
+            let a = prompt("Please enter first digit");
+            let b = prompt("Please enter second digit");
+            if(a > b) console.log(a + " > " + b);
+            else if (b > a) console.log(a + " < " + b);
+            else console.log(a + " = " + b);
+        }
+        function two(){
+            console.clear();
+            let a = prompt("Please enter flat number");
+            if(a>=1 && a<=20) console.log("This flat is in first entrance");
+            else if(a>=21 && a<=48) console.log("This flat is in first entrance");
+            else if(a>=49 && a<=90) console.log("This flat is in first entrance");
+            else console.log("There is no such flat number");
+        }
+        function three(){
+            console.clear();
+            let number = Number(prompt("Please enter an integer"));
+            if( number === 10) alert("true");
+            else alert("false");
+        }
+        function four(){
+            console.clear();
+            let x = document.getElementById("fourth").value;
+            if(!isNaN(x) && x % 1 === 0 && x !== "" && x > (-2)**53 && x < 2**53){
+                console.log("int");
+            } else if(!isNaN(x) && x % 1 !== 0 && x !== "" && x > (-2)**53 && x < 2**53){
+                console.log("double");
+            } else if(isNaN(x) && ((x.includes("{",0) && x.includes("}", x.length - 1))) || (x.includes("[",0) && x.includes("]", x.length - 1))){
+                console.log("array or object");
+            } else if(isNaN(x) && x !== "NaN" ) {
+                console.log("string");
+            } else {
+                // on srabotaet v dannom sluchae esli cifra okajetsya bolshe 2**53 ili nije chem -2**53
+                // po drugomu ne znayu kak sdelat tak kak type of ot prompta i inputa vseqda string, izza etoqo nujno vse tolko cherez proverki delat
+                console.log("something else");
+            }
+            // po prikolu
+            let regex = /salam/;
+            if(regex.test(x)) console.log("salam is typed");
+        }
+        function five(){
+            let a = document.getElementById("fifth").value;
+            if(a >= 10 && a <= 22){
+                console.clear();
+                console.log("ми йдемо ВЧИТИСЯ");
+            } else{
+                console.clear();
+                console.log("сидимо вдома і вчимося ОНЛАЙН");
+            } 
+        }
+        function six(){
+            let a = document.getElementById("sixth").value;
+            switch (a) {
+                case "1":
+                    console.clear();
+                    console.log("Mashina");
+                    break;
+                case "2":
+                    console.clear();
+                    console.log("Motocikl");
+                    break;
+                case "3":
+                    console.clear();
+                    console.log("Telefon");
+                    break;
+                case "4":
+                    console.clear();    
+                    console.log("Chexol dla telefona soseda");
+                    break;
+                case "5":
+                    console.clear();
+                    console.log("Xlopok po plechu");
+                    break;
+                default:
+                    console.clear();
+                    console.log("Prosba ispitat udachu eshe raz");
+                    break;
+            }
+        }
+    </script>
+</body>
+</html>

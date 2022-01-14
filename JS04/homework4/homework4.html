@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS4 - Homework</title>
+</head>
+<body>
+    <div id="forParagraph"></div> <br>
+    <div id="forUl"></div> <br>
+    <div id="forUl2"></div> <br>
+    <div id="forPrimitivesUl"></div> <br>
+    <div id="forObjectsArray"></div> <br>
+
+    <script>
+        // - створити функцію яка обчислює та повертає площу прямокутника зі сторонами а і б
+        function one(a,b){
+            return a*b;
+        }
+        console.log(one(5,10));
+        // - створити функцію яка обчислює та повертає площу кола з радіусом r
+        function two(r){
+            return Number((Math.PI*(r**2)).toFixed(2));
+        }
+        console.log(two(4));
+        // - створити функцію яка обчислює та повертає площу циліндру висотою h, та радіутом r
+        function three(h,r){
+            return Number((two(r)*h).toFixed(2));
+        }
+        console.log(three(5,4));
+        // - створити функцію яка приймає масив та виводить кожен його елемент
+        function logMassiv(arr){
+            for (const a of arr) {
+                console.log(a);
+            }
+        }
+        logMassiv([1,2,3,4,5]);
+        // - створити функцію яка створює параграф з текстом. Текст задати через аргумент
+        function createParWithText(text){
+            document.getElementById("forParagraph").innerHTML += `<p>${text}</p>`;
+        }
+        createParWithText("Paragraph");
+        // - створити функцію яка створює ul з трьома елементами li. Текст li задати через аргумент всім однаковий
+        function createUlWithThreeLis(text){
+            document.getElementById("forUl").innerHTML += `
+            <ul>
+                <li>${text}</li>
+                <li>${text}</li>
+                <li>${text}</li>
+            </ul>
+            `;
+        }
+        createUlWithThreeLis("List Item");
+        // - створити функцію яка створює ul з трьома елементами li. Текст li задати через аргумент всім однаковий.
+        // Кількість li визначається другим аргументом, який є числовим (тут використовувати цикл)
+        function createUlWithThreeLis2(text,count=3){
+            document.getElementById("forUl2").innerHTML += `<ul id="myUl"></ul>`
+            for(let i = 0 ; i < count ; i++){
+                document.getElementById("myUl").innerHTML += `<li>${text}</li>`
+            }
+        }
+        createUlWithThreeLis2("List Item");
+        // - створити функцію яка приймає масив примітивних елементів (числа,стрінги,булеві), та будує для них список
+        function primitiveElements(){
+            let arr = arguments[0];
+            document.getElementById("forPrimitivesUl").innerHTML = `<ul id="primitivesUl"></ul>`
+            for(let i = 0 ; i < arr.length ; i++){
+                if(typeof arr[i] !== "object" || typeof arr[i] !== "function"){
+                    document.getElementById("primitivesUl").innerHTML += `<li>${arr[i]}</li>`;
+                }
+            }
+        }
+        primitiveElements([3,"salam",true,[1,2,3]]);
+        // - створити функцію яка приймає масив об'єктів з наступними полями id,name,age , та виводить їх в документ.
+        // Для кожного об'єкту окремий блок.
+        function objectsArray(){
+            let arr = arguments[0];
+            for(let i = 0 ; i < arr.length ; i++){
+                document.getElementById("forObjectsArray").innerHTML += `<ul id="objectsUl${i}"></ul>`
+                for (const key in arr[i]) {
+                    if (Object.hasOwnProperty.call(arr[i], key)) {
+                        const element = arr[i][key];
+                        console.log(element);
+                        document.getElementById(`objectsUl${i}`).innerHTML += `<li>${key} : ${element}</li>`
+                    }
+                }
+            }
+        }
+        objectsArray([{id : 1 , name : "Cahangir" , age : 27} , {id : 2 , name : "Xadija" , age : 27}]);
+    </script>
+</body>
+</html>

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>JS9 - Additional3 (Super Additional)</title>
+    </head>
+    <body>
+        <div id="content"></div>
+        <h1>Правила бойцовского клуба</h1>
+        <div id="wrap">
+            <div class="rules rule1">
+                <h2>Первое правило Бойцовского клуба.</h2>
+                <p>Никому не рассказывать о Бойцовском клубе.</p>
+            </div>
+            <div class="rules rule2">
+                <h2>Второе правило Бойцовского клуба.</h2>
+                <p>Никогда никому не рассказывать о Бойцовском клубе.</p>
+            </div>
+            <div class="rules rule3">
+                <h2>Третье правило Бойцовского клуба.</h2>
+                <p>В схватке участвуют только двое.</p>
+            </div>
+            <div class="rules rule4">
+                <h2>Четвертое правило Бойцовского клуба.</h2>
+                <p>Не более одного поединка за один раз.</p>
+            </div>
+
+            <div class="rules rule5">
+                <h2>Пятое правило Бойцовского клуба.</h2>
+                <p>Бойцы сражаются без обуви и голые по пояс.</p>
+            </div>
+            <div class="rules rule6">
+                <h2>Шестое правило Бойцовского клуба.</h2>
+                <p>Поединок продолжается столько, сколько потребуется.</p>
+            </div>
+            <div class="rules rule7">
+                <h2>Седьмое правило Бойцовского клуба.</h2>
+                <p>Если противник потерял сознание или делает вид, что потерял, или говорит «Хватит» — поединок
+                    окончен.</p>
+            </div>
+            <div class="rules rule8">
+                <h2>Восьмое и последнее правило Бойцовского клуба.</h2>
+                <p>Новичок обязан принять бой.</p>
+            </div>
+        </div>
+
+        <div id="task2" style="display: none;"></div>
+        <div id="task3" style="display: none;"></div>
+        <div id="task4" style="display: none;"></div>
+        <div id="task5" style="display: none;"></div>
+
+        <script>
+            let users = [{
+                name: 'vasya',
+                age: 31,
+                status: false,
+                address: {city: 'Lviv', country: 'Ukraine', street: 'Shevchenko', houseNumber: 1}
+            }, {
+                name: 'petya',
+                age: 30,
+                status: true,
+                address: {city: 'New York', country: 'USA', street: 'East str', houseNumber: 21}
+            }, {
+                name: 'kolya',
+                age: 29,
+                status: true,
+                address: {city: 'Budapest', country: 'Hungary', street: 'Kuraku', houseNumber: 78}
+            }, {
+                name: 'olya',
+                age: 28,
+                status: false,
+                address: {city: 'Prague', country: 'Czech', street: 'Paster', houseNumber: 56}
+            }, {
+                name: 'max',
+                age: 30,
+                status: true,
+                address: {city: 'Istanbul', country: 'Turkey', street: 'Mikar', houseNumber: 39}
+            }, {
+                name: 'anya',
+                age: 31,
+                status: false,
+                address: {city: 'Rio', country: 'Brasil', street: 'Ronaldi', houseNumber: 5}
+            }, {
+                name: 'oleg',
+                age: 28,
+                status: false,
+                address: {city: 'Montreal', country: 'Canada', street: 'Acusto', houseNumber: 90}
+            }, {
+                name: 'andrey',
+                age: 29,
+                status: true,
+                address: {city: 'Quebeck', country: 'Canada', street: 'Binaro', houseNumber: 33}
+            }, {
+                name: 'masha',
+                age: 30,
+                status: true,
+                address: {city: 'Moscow', country: 'Russia', street: 'Gogolia', houseNumber: 1}
+            }, {
+                name: 'olya',
+                age: 31,
+                status: false,
+                address: {city: 'Portland', country: 'USA', street: 'Forest str', houseNumber: 4}
+            }, {
+                name: 'max',
+                age: 31,
+                status: true,
+                address: {city: 'Cairo', country: 'Egypt', street: 'Seashore', houseNumber: 45}
+            }];
+            
+            // - З масиву users за допомогою циклу витягнути адреси користувачів і записати (скопіювати) їх в інший порожній масив.
+            let usersAddresses = [];
+            for(let i = 0 ; i < users.length ; i++){
+                usersAddresses.push(users[i]["address"])
+            }
+            console.log(usersAddresses);
+
+            // - За допомоги циклу проітерувати  масив users, записати кожного юзера в свій блок за допомоги document.createElement.
+            //  Всі данні в одному блоці.
+            for(let i = 0 ; i < users.length ; i++){
+                let newDiv = document.createElement("div");
+                for (const key in users[i]) {
+                    if (Object.hasOwnProperty.call(users[i], key)) {
+                        const element = users[i][key];
+                        if (typeof element === "object"){
+                            for (const ke in element) {
+                                if (Object.hasOwnProperty.call(element, ke)) {
+                                    const elem = element[ke];
+                                    newDiv.innerText += `${elem} `;
+                                }
+                            }
+                        } else newDiv.innerText += `${element} `;
+                    }
+                }
+                document.getElementById("task2").append(newDiv);
+            }
+
+            // - За допомоги циклу проітерувати  масив users, записати кожного юзера в сівй блок за допомоги document.createElement,
+            //  розділивши всі властивості по своїм блокам (div>div*4)
+            for(let i = 0 ; i < users.length ; i++){
+                let newDiv = document.createElement("div");
+                for (const key in users[i]) {
+                    let newInnerDiv = document.createElement("div");
+                    if (Object.hasOwnProperty.call(users[i], key)) {
+                        const element = users[i][key];
+                        if (typeof element === "object"){
+                            for (const ke in element) {
+                                if (Object.hasOwnProperty.call(element, ke)) {
+                                    const elem = element[ke];
+                                    newInnerDiv.innerText += `${elem} `;
+                                }
+                            }
+                        } else newInnerDiv.innerText += `${element} `;
+                    }
+                    newDiv.append(newInnerDiv);
+                }
+                document.getElementById("task3").append(newDiv);
+            }
+
+            // - За допомоги циклу проітерувати  масив users, записати кожного юзера в сівй блок за допомоги document.createElement,
+            //  розділивши всі властивості по своїм блокам , блок з адресою зробити окремим блоком, з блоками для кожної властивості
+            for(let i = 0 ; i < users.length ; i++){
+                let newDiv = document.createElement("div");
+                for (const key in users[i]) {
+                    if (Object.hasOwnProperty.call(users[i], key)) {
+                        const element = users[i][key];
+                        if (typeof element === "object"){
+                            let newInnerUl = document.createElement("ul");
+                            for (const ke in element) {
+                                if (Object.hasOwnProperty.call(element, ke)) {
+                                    const elem = element[ke];
+                                    let newLi = document.createElement("li")
+                                    newLi.innerText = elem;
+                                    newInnerUl.append(newLi);
+                                }
+                            }
+                            newDiv.append(newInnerUl);
+                        } else {
+                            let newInnerDiv = document.createElement("div");
+                            newInnerDiv.innerText += `${element} `;
+                            newDiv.append(newInnerDiv);
+                        }
+                    }
+                }
+                document.getElementById("task4").append(newDiv);
+            }
+
+            // -Є масив котрий характеризує правила. Створити скрипт який ітерує цей масив, та робить з кожне правило в окремому блоці.
+            // При цому в блоці, номер правила записати в свій блок, текст правила записати в свій окремий блок.
+            // Результатом відпрацювання скріпта повинна бути структура яка міститься в блоці wrap файла rules.html
+            let rules = [
+                {
+                    title: 'Первое правило Бойцовского клуба.',
+                    body: 'Никому не рассказывать о Бойцовском клубе.'
+                },
+                {
+                    title: 'Второе правило Бойцовского клуба.',
+                    body: 'Никогда никому не рассказывать о Бойцовском клубе.'
+                },
+                {
+                    title: 'Третье правило Бойцовского клуба.',
+                    body: 'В схватке участвуют только двое.'
+                },
+                {
+                    title: 'Четвертое правило Бойцовского клуба.',
+                    body: 'Не более одного поединка за один раз.'
+                },
+                {
+                    title: 'Пятое правило Бойцовского клуба.',
+                    body: 'Бойцы сражаются без обуви и голые по пояс.'
+                },
+                {
+                    title: 'Шестое правило Бойцовского клуба.',
+                    body: 'Поединок продолжается столько, сколько потребуется.'
+                },
+                {
+                    title: 'Седьмое правило Бойцовского клуба.',
+                    body: 'Если противник потерял сознание или делает вид, что потерял, или говорит «Хватит» — поединок окончен.'
+                },
+                {
+                    title: 'Восьмое и последнее правило Бойцовского клуба.',
+                    body: 'Новичок обязан принять бой.'
+                },
+
+            ];
+            
+            for(let i = 0 ; i < rules.length ; i++){
+                let newDiv = document.createElement("div");
+                newDiv.classList.add("rules" , `rule${i+1}`);
+                let newTitle = document.createElement("h2");
+                newTitle.innerText = rules[i]["title"];
+                let newBody = document.createElement("p");
+                newBody.innerText = rules[i]["body"];
+                newDiv.append(newTitle,newBody);                
+                document.getElementById("task5").append(newDiv)
+            }
+
+            // - є сторінка rules.html. Контентом сторінки є заголовки та параграфи. Заголовки (h2) характеризують тему контенту яка вказана в параграфі.
+            // створити скріпт, котрий зчитує всі заголовки, та робить в блоці з id=content з них список(ul>li), який буде змістом того, що знаходиться на сторінці.
+            // Скріпт повинен працювати навіть якщо кількість блоків з заголовком та параграфом зміниться.
+
+            let h2List = [];
+            function rec(elements){
+                for (const element of elements) {
+                    if(element.tagName.toLowerCase() === "h2" && elements[0] === element){
+                        h2List.push(element.innerText)
+                    }
+                    if (element.children.length) rec(element.children);
+                }
+            }
+            rec(document.getElementById("wrap").children);
+
+            let cont = document.getElementById("content");
+            let newUl = document.createElement("ul");
+            for (const h2 of h2List) {
+                let newLi = document.createElement("li");
+                newLi.innerText = h2;
+                newUl.append(newLi);
+            }
+            cont.append(newUl);
+        </script>
+    </body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS9 - Additional1</title>
+</head>
+<body>
+    
+    <script>
+        // - Є масив :
+        let courses = [
+            {
+                title: 'JavaScript Complex',
+                monthDuration: 5,
+                hourDuration: 909,
+                modules: ['html', 'css', 'js', 'mysql', 'mongodb', 'react', 'angular', 'aws', 'docker', 'git', 'node.js'],
+                logo: '',
+                price: 0,
+                rating: 5,
+                avgResult: 99
+            },
+            {
+                title: 'Java Complex',
+                monthDuration: 6,
+                hourDuration: 909,
+                modules: ['html',
+                    'css',
+                    'js',
+                    'mysql',
+                    'mongodb',
+                    'react',
+                    'angular',
+                    'aws',
+                    'docker',
+                    'git',
+                    'java core',
+                    'java advanced'],
+                logo: '',
+                price: 0,
+                rating: 4.998,
+                avgResult: 97
+            },
+            {
+                title: 'Python Complex',
+                monthDuration: 6,
+                hourDuration: 909,
+                modules: ['html',
+                    'css',
+                    'js',
+                    'mysql',
+                    'mongodb',
+                    'react',
+                    'angular',
+                    'aws',
+                    'docker',
+                    'git',
+                    'python core',
+                    'python advanced'],
+                logo: '',
+                price: 0,
+                rating: 4.812,
+                avgResult: 98
+            },
+            {
+                title: 'QA Complex',
+                monthDuration: 4,
+                hourDuration: 909,
+                modules: ['html', 'css', 'js', 'mysql', 'mongodb', 'react', 'angular', 'aws', 'docker', 'git', 'QA/QC'],
+                logo: '',
+                price: 0,
+                rating: 4.65,
+                avgResult: 97
+            },
+            {
+                title: 'FullStack',
+                monthDuration: 7,
+                hourDuration: 909,
+                modules: ['html',
+                    'css',
+                    'js',
+                    'mysql',
+                    'mongodb',
+                    'react',
+                    'angular',
+                    'aws',
+                    'docker',
+                    'git',
+                    'node.js',
+                    'python',
+                    'java'],
+                logo: '',
+                price: 0,
+                rating: 4.772,
+                avgResult: 100
+            },
+            {
+                title: 'Frontend',
+                monthDuration: 4,
+                hourDuration: 909,
+                modules: ['html', 'css', 'js', 'mysql', 'mongodb', 'react', 'angular', 'aws', 'docker', 'git', 'sass'],
+                logo: '',
+                price: 0,
+                rating: 4.53,
+                avgResult: 90
+            }
+        ];
+
+        // Створити під кожен елемент окремий блок. В цьому блоці, під кожну властивість, створити окремий блок. 
+        // Для властивості modules зробити список в цьому ж  блоці (в якому знаходиться все)
+        for (let i = 0 ; i < courses.length ; i++) {
+            let newDiv = document.createElement("div");
+            newDiv.classList.add("course");
+            document.body.insertBefore(newDiv,document.getElementsByTagName("script")[0]);
+            let newDivForSplit = document.createElement("div");
+            newDivForSplit.classList.add("DivForSplit");
+            for (const key in courses[i]) {
+                if (Object.hasOwnProperty.call(courses[i], key)) {
+                    if (!((key === "monthDuration" || key === "hourDuration"))){
+                        let newInnerDiv = document.createElement("div");
+                        newInnerDiv.classList.add(`courseDescription`,`course${key.slice(0,1).toUpperCase()}${key.slice(1)}`);
+                        if(key === "modules"){
+                            newInnerDiv.innerHTML = `<ul></ul>`;
+                            for (const a of courses[i][key]) {
+                                newInnerDiv.children[0].innerHTML += `<li>${a}</li>`
+                            }
+                        } else newInnerDiv.innerHTML = `<h4>${courses[i][key]}</h4>`;
+                        document.getElementsByClassName("course")[i].appendChild(newInnerDiv);
+                    } else {
+                        newDivForSplit.innerHTML += `<div class="courseDescription course${key.slice(0,1).toUpperCase()}${key.slice(1)}"><h4>${courses[i][key]}</h4></div>`
+                        document.getElementsByClassName("course")[i].appendChild(newDivForSplit);
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>

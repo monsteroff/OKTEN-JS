@@ -1,0 +1,68 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    font-weight: 600;
+}
+a:link,
+a:visited,
+a:active{
+    color: white;    
+}
+.usersDiv{
+    background-color: #1e2125;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap : 10px;
+}
+.userDiv{
+    background-color: silver;
+    padding: 10px;
+    border-radius: 5px;
+    min-height: 200px;
+    display: grid;
+    grid-template-rows: 1fr 1fr 40px;
+    transition: 0.3s;
+    border: 2px solid silver;
+}
+.userDiv:hover{
+    box-shadow: 0 0 0 2px black inset;
+}
+/* .userId{} */
+/* .userName{} */
+.userButton{
+    background-color: #212428;
+    border: 2px solid #212428;
+    border-radius: 5px;
+    max-width: 150px;
+    height: 40px;
+    display: grid;
+    place-content: center;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.userButton:hover{
+    box-shadow: 0 0 0 2px silver inset;
+}
+.userAnchor{
+    color: white;
+}
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: silver;
+}
+::-webkit-scrollbar-thumb {
+    background: gray;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: rgb(104, 104, 104);
+}
+html{
+    overflow-y: scroll;
+}

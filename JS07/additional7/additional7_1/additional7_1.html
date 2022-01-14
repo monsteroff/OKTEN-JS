@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS7 - Additional1</title>
+</head>
+<body>
+    <script>
+        // - Створити клас або функцію конструктор, за допомоги якої можна створювати об'єкти наступного вигляду.
+        // Конструктор повинен приймати значення для кожної властивості, в т.ч і для властивостей внутрішніх об'єктів
+
+        // {
+        //     id: 1,
+        //     name: 'Leanne Graham',
+        //     username: 'Bret',
+        //     email: 'Sincere@april.biz',
+        //     address: {
+        //         street: 'Kulas Light',
+        //         suite: 'Apt. 556',
+        //         city: 'Gwenborough',
+        //         zipcode: '92998-3874',
+        //         geo: {
+        //             lat: '-37.3159',
+        //             lng: '81.1496'
+        //         }
+        //     },
+        //     phone: '1-770-736-8031 x56442',
+        //     website: 'hildegard.org',
+        //     company: {
+        //         name: 'Romaguera-Crona',
+        //         catchPhrase: 'Multi-layered client-server neural-net',
+        //         bs: 'harness real-time e-markets'
+        //     }
+        // }
+        function User(id,name,username,email,addressStreet,addressSuite,addressCity,addressZipcode,addressLat,addressLng,phone,website,companyName,companyCatchPhrase,companyBs){
+            this.id = id;
+            this.name = name;
+            this.username = username;
+            this.email = email;
+            this.address = {
+                street : addressStreet,
+                suite : addressSuite,
+                city : addressCity,
+                zipcode : addressZipcode,
+                geo : {
+                    lat : addressLat,
+                    lng : addressLng
+                }
+            };
+            this.phone = phone;
+            this.website = website;
+            this.company = {
+                name : companyName,
+                catchPhrase : companyCatchPhrase,
+                bs : companyBs
+            }
+        }
+        let user1 = new User(1,"Cahangir","monsteroff","cahangir.qanizade@gmail.com","H.Aliyev ave.","79/2","Baku",1033,"40.397560","49.872311","+994514040074","j4xresume.netlify.app","J4XCORP","Multi-layered client-server neural-net","harness real-time e-markets")
+        console.log(user1);
+
+        // -  Створити функцію конструктор / клас  який описує об'єкт тегу
+        // Поля :
+        // -назва тегу ()
+        // - опис його дій
+        // - масив з атрибутами (2-3 атрибути максимум)
+        // Кожен атрибут описати як окремий який буде містити
+        // -назву атрибуту
+        // -опис дії атрибуту
+        // інформацію брати з htmlbook.ru
+        // Таким чином описати теги
+        // -a
+        // -div
+        // -h1
+        // -span
+        // -input
+        // -form
+        // -option
+        // -select
+        // Приклад результуючого об'єкту
+        // {
+        //         titleOfTag: 'area',
+        //         action: `Каждый элемент <area> определяет активные области изображения, которые являются ссылками...`,
+        //         attrs: [
+        //         {titleOfAttr: 'accesskey', actionOfAttr: 'Переход к области с помощью комбинации клавиш'},
+        //         {/*some props and values*/},
+        //         {/*...*/},
+        //         {/*...*/},
+        //         ]
+
+        // }
+        function Tag(tagName,tagFunctionDescription,attributesList){
+            this.tagName = tagName;
+            this.tagFunctionDescription = tagFunctionDescription;
+            this.attributesList = attributesList;
+        }
+        function Attribute(attributeName,attributeDescription) {
+            this.attributeName = attributeName;
+            this.attributeDescription = attributeDescription;
+        }
+        let tagA = new Tag
+        (
+            "<a>",
+            "является одним из важных элементов HTML и предназначен для создания ссылок",
+            [
+                new Attribute("href","Задает адрес документа, на который следует перейти."),
+                new Attribute("target","Имя окна или фрейма, куда браузер будет загружать документ."),
+                new Attribute("download","Предлагает скачать указанный по ссылке файл.")
+            ]
+        )
+        let tagDiv = new Tag
+        (
+            "<div>",
+            "является блочным элементом и предназначен для выделения фрагмента документа с целью изменения вида содержимого",
+            [
+                new Attribute("title","Добавляет всплывающую подсказку к содержимому."),
+                new Attribute("align","Задает выравнивание содержимого тега <div>.")
+            ]
+        )
+        let tagH1 = new Tag
+        (
+            "<h1>",
+            "представляет собой наиболее важный заголовок первого уровня",
+            [
+                new Attribute("class","Определяет имя класса, которое позволяет связать тег со стилевым оформлением."),
+                new Attribute("id","Указывает имя стилевого идентификатора."),
+            ]
+        )
+        let tagSpan = new Tag
+        (
+            "<span>",
+            "предназначен для определения строчных элементов документа",
+            [
+                new Attribute("class","Определяет имя класса, которое позволяет связать тег со стилевым оформлением."),
+                new Attribute("id","Указывает имя стилевого идентификатора.")
+            ]
+        )
+        let tagInput = new Tag
+        (
+            "<input>",
+            "предназначен для создания текстовых полей, различных кнопок, переключателей и флажков.",
+            [
+                new Attribute("class","Определяет имя класса, которое позволяет связать тег со стилевым оформлением."),
+                new Attribute("required","Обязательное для заполнения поле."),
+                new Attribute("placeholder","Выводит подсказывающий текст.")
+            ]
+        )
+        let tagForm = new Tag
+        (
+            "<form>",
+            "предназначена для обмена данными между пользователем и сервером",
+            [
+                new Attribute("accept-charset","Устанавливает кодировку, в которой сервер может принимать и обрабатывать данные."),
+                new Attribute("action","Адрес программы или документа, который обрабатывает данные формы."),
+                new Attribute("name","Имя формы.")
+            ]
+        )
+        let tagOption = new Tag
+        (
+            "<option>",
+            "определяет отдельные пункты списка, создаваемого с помощью контейнера <select>.",
+            [
+                new Attribute("disabled","Заблокировать для доступа элемент списка."),
+                new Attribute("selected","Заранее устанавливает определенный пункт списка выделенным."),
+                new Attribute("value","Значение пункта списка, которое будет отправлено на сервер или прочитано с помощью скриптов.")
+            ]
+        )
+        let tagSelect = new Tag
+        (
+            "<select>",
+            "позволяет создать элемент интерфейса в виде раскрывающегося списка",
+            [
+                new Attribute("size","Количество отображаемых строк списка."),
+                new Attribute("autofocus","Устанавливает, что список получает фокус после загрузки страницы."),
+                new Attribute("multiple","Позволяет одновременно выбирать сразу несколько элементов списка.")
+            ]
+        )
+        console.log(tagA);
+        console.log(tagDiv);
+        console.log(tagH1);
+        console.log(tagSpan);
+        console.log(tagInput);
+        console.log(tagForm);
+        console.log(tagOption);
+        console.log(tagSelect);
+    </script>
+</body>
+</html>

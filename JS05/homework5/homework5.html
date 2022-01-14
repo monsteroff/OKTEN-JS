@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS5 - Homework</title>
+</head>
+<body>
+    <div id="forFive"></div>
+    <div id="forUL1"></div>
+    <div id="forUL2"></div>
+    <div id="forPrimitives"></div>
+    <div id="forNonPrimitives"></div>
+    <script>
+    // Всі функції повинні бути описані стрілочним типом!!!!
+    // - створити функцію яка обчислює та повертає площу прямокутника висотою
+    let one = (a,b) => a*b;
+    console.log(one(4,2));
+    // - створити функцію яка обчислює та повертає площу кола
+    let two = (r) => Number((Math.PI*(r**2)).toFixed(2));
+    console.log(two(5));
+    // - створити функцію яка обчислює та повертає площу циліндру
+    let three = (r,h) => two(r)*h;
+    console.log(three(5,4));
+    // - створити функцію яка приймає масив та виводить кожен його елемент
+    let four = (arr) => console.log(arr);
+    four([1,2,3,4,5])
+    // - створити функцію яка  створює параграф з текстом. Текст задати через аргумент
+    let five = (text) => document.getElementById("forFive").innerHTML += `<p>${text}</p>`;
+    five("salam");
+    // - створити функцію яка  створює ul з трьома елементами li.
+    // Текст li задати через аргумент всім однаковий
+    let six = () => {
+        document.getElementById("forUL1").innerHTML += `<ul id="UL1"></ul>`;
+        for(let i = 0; i < 3 ; i++){
+            document.getElementById("UL1").innerHTML += `<li>odinakoviy tekst dlya li</li>`
+        }
+    };
+    six();
+    // - створити функцію яка  створює ul з трьома елементами li. Текст li задати через аргумент всім 
+    // однаковий. Кількість li визначається другим аргументом, який є числовим (тут використовувати цикл)
+    let seven = (text , liCount) => {
+        document.getElementById("forUL2").innerHTML += `<ul id="UL2"></ul>`;
+        for(let i = 0; i < liCount ; i++){
+            document.getElementById("UL2").innerHTML += `<li>${text}</li>`
+        }
+    };
+    seven("salamandjarus" , 5);
+    // - створити функцію яка приймає масив примітивних елементів (числа,стрінги,булеві), 
+    // та будує для них список
+    let eight = (primitives) => {
+        document.getElementById("forPrimitives").innerHTML += `<ul id="primitives"></ul>`;
+        for (const p of primitives) {
+            document.getElementById("primitives").innerHTML += `<li>${p}</li>`
+        }
+    };
+    eight([1,"salam",true,2,"sagol",false]);
+    // - створити функцію яка приймає масив об'єктів з наступними полями id,name,age ,
+    //  та виводить їх в документ. Для кожного об'єкту окремий блок.
+    let nine = (nonPrimitives) => {
+        let i = 0;
+        for (const n of nonPrimitives) {
+            document.getElementById("forNonPrimitives").innerHTML += `<ul id="nonPrimitive${i}"></ul>`;
+            for (const key in n) {
+                if (Object.hasOwnProperty.call(n, key)) {
+                    const element = n[key];
+                    document.getElementById(`nonPrimitive${i}`).innerHTML += `<li>${element}</li>`
+                }
+            }
+            i++;
+        }
+    };
+    nine([{id : 1 , name : "Cahangir" , age : 27},{id : 2 , name : "Baxtiyar" , age : 27},{id : 3 , name : "Eldar" , age : 28}]);
+    </script>
+</body>
+</html>

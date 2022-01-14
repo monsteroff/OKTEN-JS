@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS6 - Additional</title>
+    <style>
+        .wrong{
+            background-color: rgb(255, 184, 184);
+        }
+    </style>
+</head>
+<body>
+<label class="wrong" for="salam"></label>
+<input id="salam" type="text" name="" onkeyup="salam()" placeholder="example@gmail.com">
+    <script>
+        // - Напишите функцию cutString(str, n), которая делит строку на подстроки, состоящие из n символов.
+        // document.writeln(cutString('наслаждение',3)) // [нас,лаж,ден,ие]
+        let cutString = (str,n) => {
+            let arr = [];
+            for(let i = 0, j = 0 ; i < Math.ceil(str.length/n); i++,j+=n ) arr.push(str.slice(j,j+n));
+            return arr;
+        };
+        console.log(cutString('наслаждение',3));
+
+        // - Створити функцію-валідатор для адрес електронної пошти. Перевірка повинна включати в себе :
+        // данні до знака равлика(@), 
+        // наявність равлика, 
+        // крапку яка знаходиться не меньше ніж на 2 символ далі після равлика,
+        // функція не чутлива до регістру (some@email.com,SOME@EMAIL.COM,some@EMAIL.com, і тд - однакові значення)
+        // Протестувати на значеннях
+        // someemail@gmail.com
+        // someeMAIL@gmail.com
+        // someeMAIL@i.ua
+        // some.email@gmail.com
+        // Примітка
+        // Для тих, хто дуже розумний, та почне використовувати регулярні вирази одразу "ні". Своїм мозком подумайте над протоколом, з регулярками будете потім бавитись.
+        let email = "asdasda123sd@gmail.com";
+        let blockedEmailList = ["someemail@gmail.com","someeMAIL@gmail.com","someeMAIL@i.ua","some.email@gmail.com"];
+        let notprohibitedCharsList = ["-","_",".","@","1","2","3","4","5","6","7","8","9","0"];
+
+        let ravlikChecker = (email) => email.indexOf("@") !== -1;
+        let dotChecker = (afterRavlik) => afterRavlik.indexOf(".") !== -1;
+        let blockedChecker = (email , blocked) => {
+            let isNotBlocked = true;
+            for(const b of blocked) if (b === email) isNotBlocked = false;
+            return isNotBlocked;
+        };
+        let ravlikCountChecker = (email) => {
+            let isRavlikLessThanOne = false;
+            let j = 0;
+            if (ravlikChecker(email)) {
+                for (const char of email) if (char === "@") j++;
+                if (j<=1) isRavlikLessThanOne = true;
+            }
+            
+            return isRavlikLessThanOne;
+        };
+        let dotIsLessThanTwoCharsToRavlikChecker = (email) => {
+            let trueOrNot = false;
+            if (ravlikChecker(email)){
+                let afterRavlik = email.split("@")[1];
+                if (dotChecker(afterRavlik)) {
+                    if(afterRavlik.indexOf(".") >= 2 && afterRavlik.indexOf(".") !== -1) trueOrNot = true;
+                }
+            }
+            return trueOrNot;
+        };
+        let notProhibitedCharsChecker = (a) => {
+            let notProhibited = false;
+            for (let i = 0 ; i<notprohibitedCharsList.length ; i++){
+                if (notprohibitedCharsList[i] === a) notProhibited = true;
+            }
+            return notProhibited;
+        };
+        let emailCharsCheck = (email) => {
+            let trueFalse = true;
+            for (const a of email) {
+                if(
+                a === a.toLowerCase() && 
+                a === a.toUpperCase() && 
+                !notProhibitedCharsChecker(a)
+                ){
+                   trueFalse = false
+                } 
+            }            
+            return trueFalse;
+        };
+        let charsCountChecker = (email) => {
+            let doRavlika = email.split("@")[0];
+            let posleRavlika = email.split("@")[1];
+            let doTochki = posleRavlika.split(".")[0];
+            let posleTochki = posleRavlika.split(".")[1];
+            let trueOrFalse = false;
+            let doRavlikaCheck = (str) => str.length >= 8;
+            let posleRavlikaCheck = (str) => str.length >= 5;
+            let doTochkiCheck = (str) => str.length >= 2;
+            let posleTochkiCheck = (str) => str.length >= 2;
+            if (doRavlikaCheck(doRavlika) && posleRavlikaCheck(posleRavlika) && doTochkiCheck(doTochki) && posleTochkiCheck(posleTochki)) {
+                trueOrFalse = true
+            }
+            console.log(trueOrFalse);
+            return trueOrFalse;
+        }
+        let emailValidation = (email) => {
+            email = email.toLowerCase();
+            console.log("Has email @ ? : " + ravlikChecker(email));
+            console.log("Is there one @ in email ? : " + ravlikCountChecker(email));
+            console.log("Is email not in blocked list : " + blockedChecker(email,blockedEmailList));
+            console.log("Dot 2 or more chars right from @ ? : " + dotIsLessThanTwoCharsToRavlikChecker(email));
+            console.log("There is no prohibited chars : " + emailCharsCheck(email));
+            return ravlikChecker(email) &&
+                blockedChecker(email, blockedEmailList) &&
+                dotIsLessThanTwoCharsToRavlikChecker(email) &&
+                emailCharsCheck(email) &&
+                charsCountChecker(email);
+        };
+        
+        function salam(){
+            console.clear();
+            if (!emailValidation(document.getElementById("salam").value)) {
+                document.getElementById("salam").classList.add("wrong");
+            }
+            else {
+                document.getElementById("salam").classList.remove("wrong")
+            }
+        }
+
+        // - є масив 
+        let coursesArray = [
+                    {
+                        title: 'JavaScript Complex',
+                        monthDuration: 5,
+                        hourDuration: 909,
+                        modules: ['html', 'css', 'js', 'mysql', 'mongodb', 'react', 'angular', 'aws', 'docker', 'git', 'node.js']
+                    },
+                    {
+                        title: 'Java Complex',
+                        monthDuration: 6,
+                        hourDuration: 909,
+                        modules: ['html',
+                            'css',
+                            'js',
+                            'mysql',
+                            'mongodb',
+                            'angular',
+                            'aws',
+                            'docker',
+                            'git',
+                            'java core',
+                            'java advanced']
+                    },
+                    {
+                        title: 'Python Complex',
+                        monthDuration: 6,
+                        hourDuration: 909,
+                        modules: ['html',
+                            'css',
+                            'js',
+                            'mysql',
+                            'mongodb',
+                            'angular',
+                            'aws',
+                            'docker',
+                            'python core',
+                            'python advanced']
+                    },
+                    {
+                        title: 'QA Complex',
+                        monthDuration: 4,
+                        hourDuration: 909,
+                        modules: ['html', 'css', 'js', 'mysql', 'mongodb', 'git', 'QA/QC']
+                    },
+                    {
+                        title: 'FullStack',
+                        monthDuration: 7,
+                        hourDuration: 909,
+                        modules: ['html',
+                            'css',
+                            'js',
+                            'mysql',
+                            'mongodb',
+                            'react',
+                            'angular',
+                            'aws',
+                            'docker',
+                            'git',
+                            'node.js',
+                            'python',
+                            'java']
+                    },
+                    {
+                        title: 'Frontend',
+                        monthDuration: 4,
+                        hourDuration: 909,
+                        modules: ['html', 'css', 'js', 'mysql', 'mongodb', 'react', 'angular', 'aws', 'docker', 'git', 'sass']
+                    }
+                ];
+        // відсортувати його в спадаючому порядку за кількістю елементів в полі modules
+        console.log(coursesArray.sort((course1,course2) => course2.modules.length - course1.modules.length ));
+        // - Напишіть функцію count(str, stringsearch), яка повертає кількість символів stringsearch у рядку str.
+        // let symb = "о", str = "Астрономия это наука о небесных объектах";
+        // document.writeln(count(str, symb)) // 5
+        let count = (str, stringsearch) => str.split(stringsearch).length-1;
+        console.log(count("Астрономия это наука о небесных объектах","о"));
+        // - Напишіть функцію cutString(str, n), яка видаляє зайві слова з рядка str, залишивши у ній n слів.
+        // let str = "Сила тяжести приложена к центру масс тела";
+        // document.writeln(cutString(str, 5)) // 'Сила тяжести приложена к центру'
+        let cutString2 = (str, n) => {
+            let strArr = str.split(" ");
+            let times = strArr.length - n;
+            console.log(strArr.length);
+            for (let i = 0 ; i < times ; i++){
+                strArr.pop();
+            }
+            return strArr;
+        };
+        console.log(cutString2("Сила тяжести приложена к центру масс тела",1));
+    </script>
+</body>
+</html>

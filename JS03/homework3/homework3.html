@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS3 - Homework</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            text-decoration: none;
+            box-sizing: border-box;
+            font-size: 20px;
+        }
+        body{
+            padding: 0 15px;
+        }
+        button{
+            border: none;
+            outline: none;
+            margin: 10px 0;
+            padding: 3px 15px;
+            background-color: rgb(0, 187, 187);
+            border-radius: 6px;
+            height: 50px;
+            transition: 0.2s;
+        }
+        button:hover{
+            background-color: cyan;
+        }
+        button.active{
+            background-color: cyan;
+        }
+        #threeResult div,
+        #threeResult h1{
+            display: inline-block;
+            font-size: 20px;
+        }
+        #oneResult,
+        #twoResult,
+        #threeResult,
+        #fourResult,
+        #fiveResult{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h3>
+            --створити масив з: <br>
+            - з 5 числових значень <br>
+            - з 5 стічкових значень <br>
+            - з 5 значень стрічкового, числового та булевого типу <br>
+            - та вивести його в консоль <br>
+        </h3>
+        <button id="buttonOne" onclick="one()">TASK1</button>
+        <h3 id="oneResult"></h3>
+        <h3>================================================</h3>
+
+        <h3>
+            -- Створити пустий масив. Наповнити його будь-якими значеннями звертаючись до конкретного індексу. Вивести в консоль
+        </h3>
+        <button id="buttonTwo" onclick="two()">TASK2</button>
+        <h3 id="twoResult"></h3>
+        <h3>================================================</h3>
+        
+        <h3>
+            - За допомогою циклу for і document.write() вивести 10 блоків div c довільним текстом всередині <br>
+            - За допомогою циклу for і document.write() вивести 10 блоків div c довільним текстом і індексом всередині <br>
+            - За допомогою циклу while вивести в документ 20 блоків h1 c довільним текстом всередині. <br>
+            - За допомогою циклу while вивести в документ 20 блоків h1 c довільним текстом і індексом всередині. <br>
+        </h3>
+        <button id="buttonThree" onclick="three()">TASK3</button>
+        <h3 id="threeResult"></h3>
+        <h3>================================================</h3>
+        
+        <h3>
+            - Створити масив з 10 числових елементів. Вивести в консоль всі його елементи в циклі. <br>
+            - Створити масив з 10 строкрових елементів. Вивести в консоль всі його елементи в циклі. <br>
+            - Створити масив з 10 елементів будь-якого типу. Вивести в консоль всі його елементи в циклі. <br>
+            - Створити масив з 10 елементів числового, стірчкового і булевого типу. За допомогою if та typeof вивести тільки булеві елементи <br>
+            - Створити масив з 10 елементів числового, стірчкового і булевого типу. За допомогою if та typeof вивести тільки числові елементи <br>
+            - Створити масив з 10 елементів числового, стрічкового і булевого типу. За допомогою if та typeof вивести тільки рядкові елементи <br>
+        </h3>
+        <button id="buttonFour" onclick="four()">TASK4</button>
+        <h3 id="fourResult"></h3>
+        <h3>================================================</h3>
+        
+        <h3>
+            - Створити порожній масив. Наповнити його 10 елементами (різними за типами)
+            через звернення до конкретних індексів. Вивести в консоль всі його елементи в циклі. <br>
+            - Створити цикл for на 10  ітерацій з кроком 1. Вивести поточний номер кроку через console.log та document.write <br>
+            - Створити цикл for на 100 ітерацій з кроком 1. Вивести поточний номер кроку через console.log та document.write <br>
+            - Створити цикл for на 100 ітерацій з кроком 2. Вивести поточний номер кроку через console.log та document.write <br>
+            - Створити цикл for на 100 ітерацій. Вивести тільки парні кроки. через console.log + document.write <br>
+            - Створити цикл for на 100 ітерацій. Вивести тільки непарні кроки. через console.log + document.write <br>
+        </h3>
+        <button id="buttonFive" onclick="five()">TASK5</button>
+        <h3 id="fiveResult"></h3>
+        <h3>================================================</h3>
+    </div>
+
+    <script>
+        function clear(){
+            document.getElementById("oneResult").innerHTML = "";
+            document.getElementById("twoResult").innerHTML = "";
+            document.getElementById("threeResult").innerHTML = "";
+            document.getElementById("fourResult").innerHTML = "";
+            document.getElementById("fiveResult").innerHTML = "";
+            document.getElementById("buttonOne").classList.remove("active");
+            document.getElementById("buttonTwo").classList.remove("active");
+            document.getElementById("buttonThree").classList.remove("active");
+            document.getElementById("buttonFour").classList.remove("active");
+            document.getElementById("buttonFive").classList.remove("active");
+        }
+        function one(){
+            clear();
+            document.getElementById("buttonOne").classList.add("active");
+
+            let firstArray = [1,2,3,4,5];
+            let secondArray = ["salam","necesen","ele","bildim","cucesen"];
+            let thirdArray = ["salam",1,true,"necesen?",2,false,"ele",3,true,"bildim",4,false,"cucesen",5,true]
+            document.getElementById("oneResult").innerHTML += `Chislovie <br> ${firstArray.join(", ")} <br><br>`;
+            document.getElementById("oneResult").innerHTML += `Strochnie <br> ${secondArray.join(", ")} <br><br>`;
+            document.getElementById("oneResult").innerHTML += `Peremeshannie <br> ${thirdArray.join(", ")} <br><br>`;
+        }
+        function two() {
+            clear();
+            document.getElementById("buttonTwo").classList.add("active");
+
+            let array = [];
+            for(let i = 0; i < 10 ; i++){
+                array[i] = `znachenie ${i}`;
+            }
+            document.getElementById("twoResult").innerHTML += `${array.join(", ")}`;
+        }
+        function three() {
+            clear();
+            document.getElementById("buttonThree").classList.add("active");
+            
+            for(let i = 0 ; i < 10 ; i++){
+                document.getElementById("threeResult").innerHTML += (`<div>for${i}</div>,&nbsp;`);
+            }
+            document.getElementById("threeResult").innerHTML += (`<br><br>`);
+            let i = 0;
+            while(i<20){
+                document.getElementById("threeResult").innerHTML += (`<h1>while${i}</h1>,&nbsp;`);
+                i++;
+            }
+        }
+        function four(){
+            clear();
+            document.getElementById("buttonFour").classList.add("active");
+
+            document.getElementById("fourResult").innerHTML += `CIFROVIE`;
+            let cifrovie = [];
+            for(let i = 0 ; i < 10 ; i++){
+                cifrovie.push(i);
+            }
+            document.getElementById("fourResult").innerHTML += `<h2>${cifrovie.join(", ")}</h2>`;
+            document.getElementById("fourResult").innerHTML += `<br>`;
+
+            document.getElementById("fourResult").innerHTML += `STROCHNIE`;
+            let strochnie = [];
+            for(let i = 0 ; i < 10 ; i++){
+                strochnie.push("strochniy" + i);
+            }
+            document.getElementById("fourResult").innerHTML += `<h2>${strochnie.join(", ")}</h2>`;
+            document.getElementById("fourResult").innerHTML += `<br>`;
+
+            document.getElementById("fourResult").innerHTML += `BULEVIE`;
+            let bulevie = [];
+            for(let i = 0 ; i < 10 ; i++){
+                if (Math.random() > 0.5) bulevie.push(true);
+                else bulevie.push(false);
+            }
+            document.getElementById("fourResult").innerHTML += `<h2>${bulevie.join(", ")}</h2>`;
+            document.getElementById("fourResult").innerHTML += `<br>`;
+
+            document.getElementById("fourResult").innerHTML += `OBSHIE`;
+            let obshie = [];
+            for(let i = 0 ; i < 10 ; i++){
+                obshie.push(cifrovie[i]);
+                obshie.push(strochnie[i]);
+                obshie.push(bulevie[i]);
+            }
+            document.getElementById("fourResult").innerHTML += `<h2>${obshie.join(", ")}</h2>`;
+            document.getElementById("fourResult").innerHTML += `<br>`;
+
+            let tolkoBooleanIzObshie = [];
+            let tolkoNumberIzObshie = [];
+            let tolkoStringIzObshie = [];
+            for (const obshiy of obshie) {
+                if (typeof obshiy === "boolean") tolkoBooleanIzObshie.push(obshiy);
+                else if (typeof obshiy === "number") tolkoNumberIzObshie.push(obshiy);
+                else if (typeof obshiy === "string") tolkoStringIzObshie.push(obshiy);
+            }
+            document.getElementById("fourResult").innerHTML += `BOOLEAN , NUMBER I STRING OTDELNO IZ OBSHEQO`;
+            document.getElementById("fourResult").innerHTML += `<br>`;
+            document.getElementById("fourResult").innerHTML += `<br>`;
+            document.getElementById("fourResult").innerHTML += `<h2>${tolkoBooleanIzObshie.join(", ")}</h2>`;
+            document.getElementById("fourResult").innerHTML += `<br>`;
+            document.getElementById("fourResult").innerHTML += `<h2>${tolkoNumberIzObshie.join(", ")}</h2>`;
+            document.getElementById("fourResult").innerHTML += `<br>`;
+            document.getElementById("fourResult").innerHTML += `<h2>${tolkoStringIzObshie.join(", ")}</h2>`;
+        }
+        function five(){
+            clear();
+            document.getElementById("buttonFive").classList.add("active");
+            let emptyArray = [];
+            let things = ['Kamen', 'Nojnici', 'Bumaga'];
+            for (let i = 0; i < 10 ; i++){
+                let randomBetweenOneAndThree = Math.ceil(Math.random()*3);
+                let str = 1;
+                let int = 2;
+                let bool = 3;
+                let thing = things[Math.floor(Math.random()*things.length)];
+                if(randomBetweenOneAndThree === str) emptyArray[i] = `${thing}`;
+                else if (randomBetweenOneAndThree === int) emptyArray[i] = Math.ceil(Math.random()*100 + 10) - 10;
+                else if (randomBetweenOneAndThree === bool) emptyArray[i] = Math.ceil(Math.random() * 2) === 1 ;
+            }
+            document.getElementById("fiveResult").innerHTML += `- Porojniy massiv <br><br> `;
+            document.getElementById("fiveResult").innerHTML += `${emptyArray.join(", ")}<br><br><br>`;
+
+            document.getElementById("fiveResult").innerHTML += `- for на 10  ітерацій з кроком 1 <br><br>`;
+            for(let i = 0; i<10 ; i++){
+                i === 9 ? document.getElementById("fiveResult").innerHTML += `${i}` : document.getElementById("fiveResult").innerHTML += `${i}, `;
+            }
+            document.getElementById("fiveResult").innerHTML += `<br><br><br>`;
+
+            document.getElementById("fiveResult").innerHTML += `- for на 100  ітерацій з кроком 1 <br><br>`;
+            for(let i = 0; i<100 ; i++){
+                i === 99 ? document.getElementById("fiveResult").innerHTML += `${i}` : document.getElementById("fiveResult").innerHTML += `${i}, `;
+            }
+            document.getElementById("fiveResult").innerHTML += `<br><br><br>`;
+
+            document.getElementById("fiveResult").innerHTML += `- for на 100  ітерацій з кроком 2 <br><br>`;
+            for(let i = 0; i<100 ; i+=2){
+                i === 98 ? document.getElementById("fiveResult").innerHTML += `${i}` : document.getElementById("fiveResult").innerHTML += `${i}, `;
+            }
+            document.getElementById("fiveResult").innerHTML += `<br><br><br>`;
+
+            document.getElementById("fiveResult").innerHTML += `- for на 100  ітерацій (тільки парні) <br><br>`;
+            for(let i = 0; i<100; i++){
+                if(i % 2 === 0) i === 98 ? document.getElementById("fiveResult").innerHTML += `${i}` : document.getElementById("fiveResult").innerHTML += `${i}, `;
+            }
+            document.getElementById("fiveResult").innerHTML += `<br><br><br>`;
+
+            document.getElementById("fiveResult").innerHTML += `- for на 100  ітерацій (тільки непарні) <br><br>`;
+            for(let i = 0; i<100; i++){
+                if(i % 2 !== 0) i === 99 ? document.getElementById("fiveResult").innerHTML += `${i}` : document.getElementById("fiveResult").innerHTML += `${i}, `;
+            }
+            document.getElementById("fiveResult").innerHTML += `<br><br><br>`;
+        }
+    </script>
+</body>
+</html>

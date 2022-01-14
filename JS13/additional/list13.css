@@ -1,0 +1,143 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    font-family: sans-serif;
+}
+.productsDiv{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    width: 100%;
+}
+.productsDiv .productDiv{
+    background-color: lightgray;
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    transition: 0.3s;
+}
+.productsDiv .productDiv:hover{
+    box-shadow: 0 0 0 2px black inset;
+}
+.productsDiv .productDiv .productDiv__upper{
+    border-radius: 10px;
+    background-color: rgb(231, 119, 119);
+    padding: 10px;
+}
+.productsDiv .productDiv .productDiv__upper .productName{
+    font-size: 40px;
+}
+.productsDiv .productDiv .productDiv__lower{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    column-gap: 10px;
+    height: 500px;
+}
+.productsDiv .productDiv .productDiv__lower .productDiv__lower__left{
+    height: 100%;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.productsDiv .productDiv .productDiv__lower .productDiv__lower__left:hover .productImage{
+    transform: scale(1.05);
+}
+.productsDiv .productDiv .productDiv__lower .productDiv__lower__left .productImage{
+    max-width: 100%;
+    max-height: 100%;
+    transition: 0.3s;
+}
+.productsDiv .productDiv .productDiv__lower .productDiv__lower__right{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+}
+.productsDiv .productDiv .productDiv__lower .productDiv__lower__right .productPrice{
+    margin-top: 30px;
+    border-bottom: 1px solid black;
+    height: 40px;
+    display: flex;
+    align-items: center;
+}
+.productsDiv .productDiv .productDiv__lower .productDiv__lower__right .productCount{
+    border-bottom: 1px solid black;
+    display: flex;
+    align-items: center;
+}
+.productsDiv .productDiv .productDiv__lower .productDiv__lower__right .productRemoveButton{
+    display: block;
+    padding: 10px;
+    height: 40px;
+    width: 100%;
+    max-width: 300px;
+    min-width: fit-content;
+    border-radius: 10px;
+    align-self: flex-end;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 20px;
+    font-weight: 600;
+    background-color: rgb(182, 21, 21);
+    color: white;
+}
+.productsDiv .productDiv .productDiv__lower .productDiv__lower__right .productRemoveButton:hover{
+    background-color: red;
+}
+.deleteAllButton{
+    background-color: rgb(182, 21, 21);
+    color: white;
+    height: 60px;
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.deleteAllButton:hover{
+    background-color: red;
+    color: white;
+}
+
+.forAnchor{
+    padding: 10px;
+    height: 80px;
+    width: 100%;
+}
+a:link,
+a:visited,
+a:active{
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    color: black;
+    background-color: silver;
+    border: 1px solid gray;
+    padding: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    font-weight: 600;
+}
+a:hover{
+    background-color: gray;
+    color: white;
+}

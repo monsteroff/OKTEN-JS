@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS5 - Classwork</title>
+</head>
+<body>
+    <script>
+        // Всі функції повинні бути описані стрілочним типом!!!!
+        // - створити функцію яка приймає три числа та виводить найменьше. (Без Math.min!)
+        let minOfThree = (a,b,c) =>{
+            if(a<b && a<c) console.log(a);
+            else if(b<a && b<c) console.log(b);
+            else if(c<a && c<b) console.log(c);
+            else console.log("est odinakovie cifri");
+        }
+        minOfThree(1,2,3);
+        // - створити функцію яка приймає три числа та виводить найбільше. (Без Math.max!)
+        let maxOfThree = (a,b,c) => {
+            if(a>b && a>c) console.log(a);
+            else if(b>a && b>c) console.log(b);
+            else if(c>a && c>b) console.log(c);
+            else console.log("est odinakovie cifri");
+        }
+        maxOfThree(1,2,3);
+        // - створити функцію яка повертає найбільше число з масиву
+        let returnMaxOfArray = (arr) => {
+            let max = arr[0];
+            for (const a of arr) {
+                if (a > max){
+                    max = a;
+                }
+            }
+            return max;
+        }
+        console.log(returnMaxOfArray([1,2,3,2,3,4,1,7,2,3,4]));
+        // - створити функцію яка повертає найменьше число з масиву
+        let returnMinOfArray = (arr) => {
+            let min = arr[0];
+            for (const a of arr) {
+                if (a < min){
+                    min = a;
+                }
+            }
+            return min;
+        }
+        console.log(returnMinOfArray([1,2,3,2,3,4,1,7,-3,3,0]));
+        // - створити функцію яка приймає масив чисел, сумує значення елементів масиву та повертає його.
+        //  Приклад [1,2,10]->13
+        let returnSumOfArray = (arr) => {
+            let sum = 0;
+            for (const el of arr) {
+                sum += el;
+            }
+            return sum;
+        }
+        console.log(returnSumOfArray([1,2,3,2,3,4,1,7,-3,3,0]));
+        // - створити функцію яка приймає масив чисел та повертає середнє арифметичне його значень.
+        let returnAverageOfArray = (arr) => {
+            return returnSumOfArray(arr) / arr.length;
+        }
+        console.log(returnAverageOfArray([1,2,3,2,3,4,1,7,-3,3,0]));
+        // - створити функцію яка приймає будь-яку кількість чисел, повертає найменьше, 
+        // а виводить найбільше (Math використовувати заборонено);
+        let returndMinButLogMax = (arr) =>{
+            console.log("Maximum of array is : " + returnMaxOfArray(arr));
+            return returnMinOfArray(arr);
+        }
+        console.log("Returned minimum of array is : " +  returndMinButLogMax([1,2,3,2,-1,4,1,7]));
+        // - створити функцію яка заповнює масив рандомними числами
+        // (цей код генерує рандомні числа в діапазоні від 0 до 100 - Math.round(Math.random()*100))
+        //  та виводить його.
+        let fillArrWithRandomNums = (arr) => {
+            for (let index = 0; index < 10; index++) {
+                arr[index] = Math.round(Math.random()*100);
+            }
+            return arr;
+        };
+        console.log(fillArrWithRandomNums([]));
+        // - створити функцію яка заповнює масив рандомними числами в діапазоні від 0 до limit. limit - аргумент, який характеризує кінцеве значення діапазону.
+        let fillArrWithRandomNumsTillLimit = (arr , limit = 10) => {
+            for (let index = 0; index < 10; index++) {
+                arr[index] = Math.round(Math.random()*limit);
+            }
+            return arr;
+        };
+        console.log(fillArrWithRandomNumsTillLimit([] , 500));
+        // - Функція приймає масив та робить з нього новий масив в зворотньому порядку. [1,2,3] -> [3, 2, 1].
+        let reverseArray = (arr) => {
+            console.log(arr);
+            let reverseArr = [];
+            let indexObratno = arr.length - 1;
+            for (const a of arr) {
+                reverseArr[indexObratno--] = a;
+            }
+            console.log(reverseArr);
+        }
+        reverseArray([1,2,3]);
+    </script>
+</body>
+</html>

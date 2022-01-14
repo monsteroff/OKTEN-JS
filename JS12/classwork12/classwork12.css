@@ -1,0 +1,89 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+.taskDiv{
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    padding: 20px;
+}
+.taskDiv .post{
+    border-radius: 5px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 20px 15px;
+    box-shadow: 0 0 0 1px yellowgreen inset;
+    transition: 0.3s;
+}
+.taskDiv .post:hover{
+    box-shadow: 0 0 0 3px yellowgreen inset;
+}
+.taskDiv .post .userId{
+    font-size: 26px;
+    background-color: silver;
+    padding: 5px 30px;
+    border-radius: 5px;
+}
+.taskDiv .post .postId{
+    display: none;
+}
+.taskDiv .post .postTitle{
+    font-size: 22px;
+}
+.taskDiv .post .postBody{
+    font-size: 19px;
+}
+.taskDiv .post .postButton{
+    border: none;
+    height: 30px;
+    box-shadow: 0 0 0 1px yellowgreen inset;
+    transition: 0.5s;
+    width: 200px;
+    align-self: flex-end;
+    border-radius: 5px;
+    outline: none;
+    margin-bottom: -10px;
+}
+.taskDiv .post .postButton:hover{
+    box-shadow: 0 0 0 3px yellowgreen inset;
+}
+.taskDiv .post .postButton.show{
+    box-shadow: 0 0 0 1px crimson inset;
+    margin-bottom: 10px;
+}
+.taskDiv .post .postButton.show:hover{
+    box-shadow: 0 0 0 2px crimson inset;
+}
+.taskDiv .post .commentsDiv{
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+.taskDiv .post .commentsDiv .commentDiv{
+    background-color: lightgray;
+    border-radius: 5px;
+    overflow: hidden;
+    transition: 0.3s;
+}
+.taskDiv .post .commentsDiv .commentDiv:hover{
+    box-shadow: 0 0 0 1.5px yellowgreen;
+}
+.taskDiv .post .commentsDiv .commentDiv .commentedUser{
+    padding: 5px 0;
+    padding-left: 20px;
+    font-size: 17px;
+}
+.taskDiv .post .commentsDiv .commentDiv .commentBody{
+    background-color: silver;
+    padding: 5px;
+    font-size: 15px;
+    text-align: justify;
+    border-radius: 5px;
+}
